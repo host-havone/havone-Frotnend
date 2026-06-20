@@ -1,0 +1,16 @@
+{
+  "name": "HAVONE MOBILITY",
+  "short_name": "HAVONE",
+  "description": "Autonomous Mobility Solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6faf8",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

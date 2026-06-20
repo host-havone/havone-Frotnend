@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure OpenAI Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .info {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        h1 { color: #10b981; }
+        pre {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #ef4444;
+        }
+        .tip {
+            background: #1e40af;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Azure OpenAI Configuration Help</h1>
+
+    <div class="info">
+        <h2>Your Current Configuration:</h2>
+        <p>The API route expects these environment variables:</p>
+        <pre>
+AZURE_OPENAI_ENDPOINT=https://haveo-mjvf43tr-eastus2.services.ai.azure.com
+AZURE_OPENAI_IMAGE_DEPLOYMENT=gpt-image-1
+AZURE_OPENAI_API_KEY=FAD...
+AZURE_OPENAI_API_VERSION=2025-04-01-preview
+        </pre>
+    </div>
+
+    <div class="tip">
+        <h3>📝 How to Find the Correct Deployment Name:</h3>
+        <ol>
+            <li>Go to <a href="https://portal.azure.com" target="_blank" style="color: #60a5fa;">Azure Portal</a></li>
+            <li>Navigate to your Azure OpenAI resource: <strong>haveo-mjvf43tr-eastus2</strong></li>
+            <li>Click on "Model deployments" or "Deployments" in the left menu</li>
+            <li>Find the DALL-E deployment name (it might be different from "gpt-image-1")</li>
+            <li>Common names: <code>dall-e-3</code>, <code>dalle3</code>, <code>image-gen</code>, <code>dall-e</code></li>
+            <li>Update <code>AZURE_OPENAI_IMAGE_DEPLOYMENT</code> in your <code>.env.local</code> file</li>
+        </ol>
+    </div>
+
+    <div class="info">
+        <h3>Alternative: Use a Free Stock Image</h3>
+        <p>Instead of dealing with API issues, you can:</p>
+        <ol>
+            <li>Visit: <a href="https://unsplash.com/s/photos/truck-dashboard-interior" target="_blank" style="color: #60a5fa;">Unsplash - Truck Dashboard</a></li>
+            <li>Download a high-quality image</li>
+            <li>Rename it to: <code>truck-dashboard.jpg</code></li>
+            <li>Save it in: <code>public/images/truck-dashboard.jpg</code></li>
+            <li>Refresh your homepage - it will work immediately!</li>
+        </ol>
+    </div>
+
+    <div class="tip">
+        <h3>🎨 Recommended Images:</h3>
+        <ul>
+            <li><a href="https://unsplash.com/photos/vehicle-interior-BVyNlchWqzs" target="_blank" style="color: #60a5fa;">Modern Truck Interior 1</a></li>
+            <li><a href="https://unsplash.com/photos/vehicle-steering-wheel-zpxKdH_xNSI" target="_blank" style="color: #60a5fa;">Truck Dashboard 2</a></li>
+            <li><a href="https://www.pexels.com/search/truck%20dashboard/" target="_blank" style="color: #60a5fa;">Pexels - Truck Dashboard</a></li>
+        </ul>
+    </div>
+</body>
+</html>

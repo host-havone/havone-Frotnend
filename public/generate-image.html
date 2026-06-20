@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Truck Dashboard Image</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+        .container {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+        button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            transform: none;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        #status.loading {
+            display: block;
+            background: #1e40af;
+            color: #dbeafe;
+        }
+        #status.success {
+            display: block;
+            background: #065f46;
+            color: #d1fae5;
+        }
+        #status.error {
+            display: block;
+            background: #991b1b;
+            color: #fecaca;
+        }
+        #result {
+            margin-top: 30px;
+        }
+        #result img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid #334155;
+        }
+        .download-btn {
+            background: #3b82f6;
+            margin-top: 15px;
+        }
+        .download-btn:hover {
+            background: #2563eb;
+        }
+        .prompt-box {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
+        }
+        .prompt-box p {
+            margin: 5px 0;
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚛 Generate Truck Dashboard Image</h1>
+        <p class="subtitle">Click the button below to generate a realistic truck dashboard image using Azure OpenAI</p>
+
+        <div class="prompt-box">
+            <p><strong>Prompt:</strong></p>
+            <p>Realistic interior view from a modern autonomous truck driver's seat, futuristic dashboard with digital displays and heads-up display (HUD), advanced sensors visible through windshield, professional automotive photography, cinematic lighting, high-tech cockpit with glowing blue and green interface elements, wide angle view through windshield showing highway road ahead, dramatic sunset lighting, 8K ultra detailed, photorealistic, commercial vehicle interior</p>
+        </div>
+
+        <button id="generateBtn" onclick="generateImage()">Generate Image</button>
+
+        <div id="status"></div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function generateImage() {
+            const btn = document.getElementById('generateBtn');
+            const status = document.getElementById('status');
+            const result = document.getElementById('result');
+
+            btn.disabled = true;
+            status.className = 'loading';
+            status.textContent = '🎨 Generating image... This may take 30-60 seconds...';
+            result.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/generate-truck-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+
+                // Check if there's an error in the response
+                if (data.error && !data.success) {
+                    status.className = 'error';
+                    status.innerHTML = `
+                        ❌ Error: ${data.error}<br>
+                        <strong>Status Code:</strong> ${data.statusCode || 'N/A'}<br>
+                        <strong>Endpoint:</strong> ${data.endpoint || 'N/A'}<br>
+                        <strong>Details:</strong> <pre style="background:#0f172a;padding:10px;border-radius:4px;margin-top:10px;overflow-x:auto;">${JSON.stringify(data.details, null, 2)}</pre>
+                    `;
+                    btn.disabled = false;
+                    return;
+                }
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to generate image');
+                }
+
+                status.className = 'success';
+                status.textContent = '✅ Image generated successfully!';
+
+                result.innerHTML = `
+                    <img src="${data.image}" alt="Generated truck dashboard" id="generatedImage">
+                    <br>
+                    <button class="download-btn" onclick="downloadImage('${data.image}')">⬇️ Download Image</button>
+                    <button class="download-btn" onclick="saveToPublic('${data.image}')">💾 Save to /public/images/</button>
+                `;
+
+            } catch (error) {
+                status.className = 'error';
+                status.textContent = '❌ Error: ' + error.message;
+                console.error('Generation error:', error);
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        function downloadImage(imageUrl) {
+            const a = document.createElement('a');
+            a.href = imageUrl;
+            a.download = 'truck-dashboard.jpg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        async function saveToPublic(imageUrl) {
+            const status = document.getElementById('status');
+            status.className = 'loading';
+            status.textContent = '💾 Saving to /public/images/truck-dashboard.jpg...';
+
+            try {
+                // For base64 data URLs
+                const response = await fetch('/api/save-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        imageUrl: imageUrl,
+                        filename: 'truck-dashboard.jpg'
+                    })
+                });
+
+                if (response.ok) {
+                    status.className = 'success';
+                    status.textContent = '✅ Image saved to /public/images/truck-dashboard.jpg! Refresh your app to see it.';
+                } else {
+                    throw new Error('Failed to save image');
+                }
+            } catch (error) {
+                status.className = 'error';
+                status.textContent = '❌ Could not save automatically. Please download and manually save to /public/images/';
+            }
+        }
+    </script>
+</body>
+</html>

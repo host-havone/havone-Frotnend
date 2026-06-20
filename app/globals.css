@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
+
+  body {
+    @apply text-body-md;
+    overscroll-behavior-y: none;
+    overflow-x: hidden;
+  }
+
+
+  h1 {
+    @apply text-h1 font-bold;
+  }
+
+  h2 {
+    @apply text-h2 font-bold;
+  }
+
+  h3 {
+    @apply text-h3 font-semibold;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+}
+
+@layer utilities {
+  /* GPU-composited keyframe animations */
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes drift {
+    from { transform: translate(0, 0); }
+    to { transform: translate(40px, 40px); }
+  }
+
+  .speedometer-needle {
+    transform-origin: 50% 90%;
+    transition: transform 0.1s ease-out;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Responsive typography and spacing adjustments for specific breakpoints */
+  @media (max-width: 1034px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 948px) {
+    html {
+      font-size: 14.5px;
+    }
+  }
+
+  @media (max-width: 783px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 472px) {
+    html {
+      font-size: 13.5px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    html {
+      font-size: 13px;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+<svg width="600" height="700" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="stateShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.2"/>
+    </filter>
+    <filter id="activeGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="700" fill="#f8f9fa"/>
+
+  <!-- Kashmir Region -->
+  <path d="M 280 60 L 300 50 L 320 55 L 335 70 L 340 90 L 330 110 L 310 120 L 290 115 L 275 95 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="kashmir"/>
+
+  <!-- Himachal Pradesh -->
+  <path d="M 290 115 L 310 120 L 325 130 L 330 145 L 320 160 L 300 165 L 285 155 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="himachal"/>
+
+  <!-- Punjab -->
+  <path d="M 270 130 L 290 125 L 310 135 L 315 150 L 305 165 L 285 170 L 270 160 Z"
+        fill="#F59E0B" stroke="#d0d0d0" stroke-width="1.5" id="punjab"/>
+
+  <!-- Haryana -->
+  <path d="M 285 170 L 305 165 L 320 175 L 325 190 L 315 205 L 295 210 L 280 200 Z"
+        fill="#F59E0B" stroke="#d0d0d0" stroke-width="1.5" id="haryana"/>
+
+  <!-- Uttarakhand -->
+  <path d="M 330 145 L 350 140 L 365 150 L 370 165 L 360 180 L 340 185 L 325 175 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="uttarakhand"/>
+
+  <!-- Rajasthan -->
+  <path d="M 220 180 L 270 165 L 295 180 L 310 210 L 315 250 L 300 280 L 270 290 L 240 285 L 215 260 L 205 220 Z"
+        fill="#EA580C" stroke="#d0d0d0" stroke-width="1.5" id="rajasthan"/>
+
+  <!-- Gujarat -->
+  <path d="M 180 260 L 220 245 L 250 260 L 260 290 L 255 320 L 235 340 L 205 345 L 180 330 L 170 300 Z"
+        fill="#EA580C" stroke="#d0d0d0" stroke-width="1.5" id="gujarat"/>
+
+  <!-- Madhya Pradesh -->
+  <path d="M 270 290 L 320 280 L 365 290 L 395 310 L 400 345 L 380 375 L 350 385 L 315 380 L 285 365 L 265 340 Z"
+        fill="#DC2626" stroke="#d0d0d0" stroke-width="1.5" id="madhya-pradesh"/>
+
+  <!-- Uttar Pradesh -->
+  <path d="M 320 210 L 370 200 L 420 210 L 460 230 L 475 260 L 470 290 L 450 315 L 420 320 L 390 310 L 365 290 L 340 280 Z"
+        fill="#DC2626" stroke="#d0d0d0" stroke-width="1.5" id="uttar-pradesh"/>
+
+  <!-- Bihar -->
+  <path d="M 450 315 L 480 305 L 510 320 L 525 340 L 520 360 L 500 370 L 475 365 L 455 350 Z"
+        fill="#F59E0B" stroke="#d0d0d0" stroke-width="1.5" id="bihar"/>
+
+  <!-- West Bengal -->
+  <path d="M 500 370 L 525 360 L 545 375 L 555 400 L 548 430 L 530 445 L 510 440 L 495 420 Z"
+        fill="#EA580C" stroke="#d0d0d0" stroke-width="1.5" id="west-bengal"/>
+
+  <!-- Jharkhand -->
+  <path d="M 475 365 L 500 360 L 520 375 L 525 395 L 515 415 L 495 420 L 475 410 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="jharkhand"/>
+
+  <!-- Odisha -->
+  <path d="M 450 380 L 475 375 L 495 390 L 505 420 L 500 450 L 480 470 L 455 465 L 440 440 Z"
+        fill="#F59E0B" stroke="#d0d0d0" stroke-width="1.5" id="odisha"/>
+
+  <!-- Chhattisgarh -->
+  <path d="M 380 375 L 410 370 L 440 385 L 455 410 L 450 440 L 430 455 L 405 450 L 385 430 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="chhattisgarh"/>
+
+  <!-- Maharashtra -->
+  <path d="M 235 340 L 280 330 L 320 340 L 350 360 L 360 395 L 350 430 L 320 450 L 280 445 L 250 425 L 230 390 Z"
+        fill="#DC2626" stroke="#d0d0d0" stroke-width="1.5" id="maharashtra"/>
+
+  <!-- Telangana -->
+  <path d="M 320 395 L 350 385 L 375 400 L 385 425 L 375 450 L 350 460 L 325 450 Z"
+        fill="#F59E0B" stroke="#d0d0d0" stroke-width="1.5" id="telangana"/>
+
+  <!-- Andhra Pradesh -->
+  <path d="M 350 430 L 385 420 L 415 435 L 430 465 L 425 500 L 405 525 L 375 530 L 350 515 L 340 485 Z"
+        fill="#EA580C" stroke="#d0d0d0" stroke-width="1.5" id="andhra-pradesh"/>
+
+  <!-- Karnataka -->
+  <path d="M 280 445 L 320 440 L 350 455 L 360 490 L 355 530 L 330 555 L 295 555 L 270 535 L 265 500 Z"
+        fill="#DC2626" stroke="#d0d0d0" stroke-width="1.5" id="karnataka"/>
+
+  <!-- Goa -->
+  <path d="M 250 425 L 270 420 L 280 435 L 278 450 L 265 460 L 250 455 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="goa"/>
+
+  <!-- Tamil Nadu -->
+  <path d="M 295 555 L 330 550 L 360 565 L 375 595 L 370 630 L 350 655 L 320 660 L 290 645 L 280 615 Z"
+        fill="#DC2626" stroke="#d0d0d0" stroke-width="1.5" id="tamil-nadu"/>
+
+  <!-- Kerala -->
+  <path d="M 270 535 L 295 545 L 305 575 L 310 610 L 305 645 L 285 660 L 265 655 L 255 625 L 260 590 Z"
+        fill="#10B981" stroke="#d0d0d0" stroke-width="1.5" id="kerala"/>
+
+  <!-- Northeast States (grouped) -->
+  <path d="M 530 445 L 555 435 L 570 450 L 575 475 L 560 495 L 540 500 L 525 485 Z"
+        fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.5" id="northeast"/>
+
+  <!-- Andaman & Nicobar Islands -->
+  <circle cx="520" cy="580" r="8" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1"/>
+  <circle cx="525" cy="605" r="6" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1"/>
+  <circle cx="530" cy="625" r="5" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1"/>
+
+  <!-- Lakshadweep Islands -->
+  <circle cx="180" cy="550" r="4" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1"/>
+  <circle cx="175" cy="565" r="3" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1"/>
+</svg>

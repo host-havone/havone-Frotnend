@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate India Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #000;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #8DC313;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background: #7AB012;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+        }
+        .loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        #imageContainer {
+            margin-top: 20px;
+        }
+        #generatedImage {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #8DC313;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗺️ Generate India Road Safety Map</h1>
+        <p>Click the button below to generate a professional India map showing states color-coded by road accident severity using AI (DALL-E 3).</p>
+        <p><strong>This will take 20-40 seconds to generate.</strong></p>
+
+        <button id="generateBtn" onclick="generateMap()">Generate India Map</button>
+
+        <div id="status"></div>
+        <div id="imageContainer"></div>
+    </div>
+
+    <script>
+        async function generateMap() {
+            const btn = document.getElementById('generateBtn');
+            const status = document.getElementById('status');
+            const imageContainer = document.getElementById('imageContainer');
+
+            // Reset
+            btn.disabled = true;
+            imageContainer.innerHTML = '';
+            status.style.display = 'block';
+            status.className = 'loading';
+            status.innerHTML = '🔄 Generating India map with AI... This may take 20-40 seconds. Please wait...';
+
+            // Show loading spinner
+            imageContainer.innerHTML = '<div class="spinner"></div><p style="text-align: center; color: #666;">Generating high-quality map...</p>';
+
+            const prompt = `A professional, clean map of India showing all states with clear borders.
+
+Color-coded by road accident severity:
+- BRIGHT RED (#DC2626): Uttar Pradesh, Tamil Nadu, Maharashtra, Karnataka, Madhya Pradesh
+- ORANGE (#EA580C): Rajasthan, West Bengal, Andhra Pradesh, Gujarat
+- AMBER (#F59E0B): Bihar, Telangana, Punjab, Haryana, Odisha
+- GREEN (#10B981): Kerala
+- LIGHT GRAY: All other states
+
+Requirements:
+- Clean white background
+- Clear state boundaries with thin dark borders
+- Professional minimalist cartographic style
+- Top-down view of entire India
+- Include a small legend in bottom-left corner showing the 4 severity levels (Critical/High/Medium/Low)
+- High quality, suitable for business dashboard
+- No text labels on states, only colors
+- Modern infographic style with high contrast`;
+
+            try {
+                const response = await fetch('/api/generate-map-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        size: "1792x1024",
+                        quality: "hd"
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                if (data.image) {
+                    status.className = 'success';
+                    status.innerHTML = '✅ India map generated successfully! Right-click and "Save Image As" to download.';
+
+                    if (data.revisedPrompt) {
+                        status.innerHTML += '<br><br><small><strong>AI Revised Prompt:</strong> ' + data.revisedPrompt + '</small>';
+                    }
+
+                    imageContainer.innerHTML = `
+                        <img id="generatedImage" src="${data.image}" alt="Generated India Map" />
+                        <p style="margin-top: 10px; color: #666; text-align: center;">
+                            <strong>Provider:</strong> ${data.provider || 'Azure OpenAI DALL-E 3'}<br>
+                            <strong>Size:</strong> 1792x1024 HD<br>
+                            <a href="${data.image}" download="india-map-generated.png" style="color: #8DC313; font-weight: bold;">Download Image</a>
+                        </p>
+                    `;
+                } else {
+                    throw new Error('No image URL in response');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                status.className = 'error';
+                status.innerHTML = '❌ Error: ' + error.message;
+                imageContainer.innerHTML = '';
+            } finally {
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

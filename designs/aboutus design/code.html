@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | HAVONE MOBILITY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#245100",
+                    "on-primary-container": "#818583",
+                    "primary-container": "#181c1b",
+                    "tertiary-container": "#151d1b",
+                    "surface-container-high": "#e5e9e7",
+                    "on-primary-fixed-variant": "#444846",
+                    "inverse-primary": "#c4c7c5",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#181c1b",
+                    "outline-variant": "#c3c7c5",
+                    "on-error": "#ffffff",
+                    "on-background": "#181c1c",
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f6faf8",
+                    "secondary": "#8DC313",
+                    "surface-container-low": "#f0f4f2",
+                    "surface-container-highest": "#dfe3e1",
+                    "outline": "#747876",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#eef2f0",
+                    "on-surface": "#181c1c",
+                    "primary-fixed": "#e0e3e1",
+                    "surface-tint": "#5b5f5e",
+                    "secondary-fixed": "#8DC313",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#bfc9c5",
+                    "surface": "#f6faf8",
+                    "tertiary-fixed": "#dbe5e1",
+                    "surface-variant": "#dfe3e1",
+                    "on-secondary-container": "#000000",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#000000",
+                    "on-tertiary-fixed-variant": "#404946",
+                    "on-surface-variant": "#434846",
+                    "primary-fixed-dim": "#c4c7c5",
+                    "inverse-surface": "#2d3130",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#151d1b",
+                    "primary": "#000000",
+                    "surface-container": "#ebefed",
+                    "secondary-fixed-dim": "#8DC313",
+                    "secondary-container": "#8DC313",
+                    "surface-dim": "#d7dbd9",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#7d8682",
+                    "background": "#f6faf8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "lg": "48px",
+                    "margin": "64px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "xs": "4px",
+                    "xl": "80px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "display": ["Space Grotesk"],
+                    "h2": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-tech": ["Space Grotesk"],
+                    "h1": ["Inter"],
+                    "h3": ["Inter"]
+            },
+            "fontSize": {
+                    "h2": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-tech": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .speedometer-needle {
+            transform-origin: 50% 90%;
+            transition: transform 0.1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Floating Speedometer -->
+<div class="fixed bottom-8 left-8 z-[60] bg-primary/95 backdrop-blur-md p-4 rounded-xl border border-outline-variant/30 shadow-2xl flex flex-col items-center pointer-events-none" id="speedometer">
+<div class="relative w-20 h-12 overflow-hidden flex items-end justify-center mb-1">
+<div class="absolute w-20 h-20 rounded-full border-4 border-outline-variant/20 top-0"></div>
+<div class="absolute bottom-1 w-1 h-10 bg-secondary-fixed rounded-full speedometer-needle" id="needle" style="transform: rotate(-90deg);"></div>
+<div class="absolute bottom-0 w-2 h-2 bg-secondary-fixed rounded-full"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-tech text-h3 text-white leading-none" id="speed-value">0</span>
+<span class="font-label-tech text-[10px] text-on-primary-container uppercase tracking-tighter">px/frame</span>
+</div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin py-base bg-surface/90 backdrop-blur-md border-b border-outline-variant/20">
+<div class="h-8">
+<img alt="HAVONE Logo" class="h-full w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw"/>
+</div>
+<nav class="hidden md:flex items-center gap-md">
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-secondary border-b-2 border-secondary pb-1 transition-colors duration-300" href="#">About Us</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Technology</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Solutions</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Newsletter</a>
+</nav>
+<button class="bg-primary text-on-primary px-md py-sm font-label-tech text-label-tech uppercase tracking-widest hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all border-b-2 border-transparent hover:border-black">
+            Contact Us
+        </button>
+</header>
+<main class="pt-[100px] overflow-x-hidden">
+<!-- Hero / Mission Statement -->
+<section class="py-xl px-margin bg-white">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row gap-lg items-end mb-xl">
+<div class="flex-1">
+<span class="font-label-tech text-label-tech text-secondary font-bold uppercase tracking-widest mb-base block">Our Mission</span>
+<h1 class="font-h1 text-h1 text-primary mb-md">Redefining Autonomy with Machine Precision.</h1>
+</div>
+<div class="flex-1 pb-base">
+<p class="font-body-lg text-body-lg text-on-surface-variant">We are engineering the future of global logistics through uncompromising safety standards and advanced AI integration, ensuring that every kilometer driven is a step toward a more sustainable and efficient world.</p>
+</div>
+</div>
+<div class="w-full h-[540px] bg-surface-container-highest rounded-lg overflow-hidden border border-outline-variant/30 shadow-sm">
+<img alt="Autonomous fleet" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpGQOsFG40MIjS3UEKSklId80B-pGnBAMWOfuM95ZRQQ5E-ccRKihlL4hl8ru1br0XEuK16wK134KQmMIPfF4Ch72UYm8PIFLJbb6hzyBn33XI0I519jNL4MTsxkCblalueYwBLvmnVN8Ay3BofrJnIj7Pd_s8dG_-cLqglGvJMTv-ADgPv5GVlETMT_TVoDBP3gkp4GsIooVSqT90BNC7cUTmbISGoBN0PRLxOo-Celqb61tIFxrG5BkCmf2hjS-O3ONwQHpmHAMB"/>
+</div>
+</div>
+</section>
+<!-- Our Story & Journey -->
+<section class="py-xl px-margin bg-surface-container-lowest border-y border-outline-variant/10">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
+<div class="md:col-span-4 sticky top-32">
+<h2 class="font-h2 text-h2 text-primary mb-md">Our Journey</h2>
+<p class="font-body-md text-on-surface-variant mb-md">Since our inception, we've been dedicated to closing the gap between human intuition and machine reliability.</p>
+<div class="flex items-center gap-sm">
+<div class="w-12 h-1 bg-secondary"></div>
+<span class="font-label-tech text-label-tech uppercase text-primary font-bold">Established 2018</span>
+</div>
+</div>
+<div class="md:col-span-8 flex flex-col gap-lg">
+<div class="p-lg bg-white border border-outline-variant/30 rounded-lg shadow-sm hover:border-secondary transition-colors duration-300">
+<span class="font-label-tech text-label-tech text-secondary mb-base block font-bold">2019 — THE PROTOTYPE</span>
+<h3 class="font-h3 text-h3 text-primary mb-sm">Accuracy Milestone</h3>
+<p class="font-body-md text-on-surface-variant">Achieved 99.9% sensor fusion accuracy in adverse weather conditions, setting a new industry benchmark for LiDAR-camera synchronization.</p>
+</div>
+<div class="p-lg bg-white border border-outline-variant/30 rounded-lg shadow-sm hover:border-secondary transition-colors duration-300">
+<span class="font-label-tech text-label-tech text-secondary mb-base block font-bold">2021 — SUSTAINABILITY PUSH</span>
+<h3 class="font-h3 text-h3 text-primary mb-sm">Net Zero Logistics</h3>
+<p class="font-body-md text-on-surface-variant">Launched the first fully electric autonomous corridor, reducing carbon emissions by 40% compared to traditional freight methods.</p>
+</div>
+<div class="p-lg bg-primary text-on-primary rounded-lg shadow-xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-tech text-label-tech text-secondary mb-base block font-bold">TODAY — SCALE &amp; INNOVATION</span>
+<h3 class="font-h3 text-h3 text-white mb-sm">The Global Grid</h3>
+<p class="font-body-md text-on-primary-container">Deploying the world's most advanced autonomous fleet management system, powered by real-time neural network training.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- R&D Focus -->
+<section class="py-xl px-margin bg-surface-container-low">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-xl text-center max-w-2xl mx-auto">
+<span class="font-label-tech text-label-tech text-secondary uppercase font-bold tracking-widest mb-base block">Core Focus</span>
+<h2 class="font-h2 text-h2 text-primary">Engineering for the 0.01% Exception</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-lg bg-white border border-outline-variant/20 rounded-xl flex flex-col items-start gap-md shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-secondary text-[48px]">sensors</span>
+<h3 class="font-h3 text-h3 text-primary">Edge Sensing</h3>
+<p class="font-body-md text-on-surface-variant">Hyper-accurate spatial awareness using high-fidelity sensor suites that process 2.5 million points per second.</p>
+<div class="w-full bg-surface-container mt-auto h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-4/5 rounded-full"></div>
+</div>
+</div>
+<div class="p-lg bg-white border border-outline-variant/20 rounded-xl flex flex-col items-start gap-md shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-secondary text-[48px]">psychology</span>
+<h3 class="font-h3 text-h3 text-primary">Neural Predict</h3>
+<p class="font-body-md text-on-surface-variant">Deep learning models that anticipate human behavior with sub-millisecond latency for proactive safety maneuvers.</p>
+<div class="w-full bg-surface-container mt-auto h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-2/3 rounded-full"></div>
+</div>
+</div>
+<div class="p-lg bg-white border border-outline-variant/20 rounded-xl flex flex-col items-start gap-md shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-secondary text-[48px]">energy_savings_leaf</span>
+<h3 class="font-h3 text-h3 text-primary">Eco-Dynamics</h3>
+<p class="font-body-md text-on-surface-variant">Precision aerodynamics and kinetic energy recovery systems that maximize range and minimize grid impact.</p>
+<div class="w-full bg-surface-container mt-auto h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-full rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Careers Section -->
+<section class="py-xl px-margin bg-white border-y border-outline-variant/10" id="careers">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
+<div class="md:col-span-5">
+<span class="font-label-tech text-label-tech text-secondary font-bold uppercase tracking-widest mb-base block">Careers</span>
+<h2 class="font-h2 text-h2 text-primary mb-md">Build the Future of Motion</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-md">Join a team of visionaries pushing the boundaries of autonomous intelligence. At Havone, you'll work on world-changing tech in a culture of radical transparency and precision.</p>
+<div class="p-lg bg-surface-container-lowest rounded-xl border border-secondary/20 mb-md shadow-sm">
+<h4 class="font-h3 text-primary mb-sm text-[20px]">Why Havone?</h4>
+<ul class="space-y-sm text-body-md text-on-surface-variant">
+<li class="flex items-center gap-sm"><span class="material-symbols-outlined text-secondary font-bold">check_circle</span> Equity in a high-growth sector</li>
+<li class="flex items-center gap-sm"><span class="material-symbols-outlined text-secondary font-bold">check_circle</span> Direct impact on climate sustainability</li>
+<li class="flex items-center gap-sm"><span class="material-symbols-outlined text-secondary font-bold">check_circle</span> Flexible-first remote &amp; hub hybrid model</li>
+</ul>
+</div>
+<a class="inline-flex items-center gap-sm font-label-tech text-label-tech text-primary font-bold uppercase tracking-widest hover:text-secondary transition-colors group" href="#full-careers">
+                        Explore Our Full Careers Portal
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="md:col-span-7 flex flex-col gap-sm">
+<div class="group p-md bg-white border border-outline-variant/30 rounded-lg flex justify-between items-center hover:bg-secondary transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div>
+<h4 class="font-h3 text-primary group-hover:text-on-secondary-fixed">Lead Perception Engineer</h4>
+<p class="font-body-md text-on-surface-variant group-hover:text-on-secondary-fixed/80">Palo Alto, CA / Remote</p>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform group-hover:text-on-secondary-fixed">arrow_forward</span>
+</div>
+<div class="group p-md bg-white border border-outline-variant/30 rounded-lg flex justify-between items-center hover:bg-secondary transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div>
+<h4 class="font-h3 text-primary group-hover:text-on-secondary-fixed">Safety Systems Architect</h4>
+<p class="font-body-md text-on-surface-variant group-hover:text-on-secondary-fixed/80">London, UK / Hybrid</p>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform group-hover:text-on-secondary-fixed">arrow_forward</span>
+</div>
+<div class="group p-md bg-white border border-outline-variant/30 rounded-lg flex justify-between items-center hover:bg-secondary transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div>
+<h4 class="font-h3 text-primary group-hover:text-on-secondary-fixed">Fleet Operations Director</h4>
+<p class="font-body-md text-on-surface-variant group-hover:text-on-secondary-fixed/80">Singapore / Hub</p>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform group-hover:text-on-secondary-fixed">arrow_forward</span>
+</div>
+<div class="group p-md bg-white border border-outline-variant/30 rounded-lg flex justify-between items-center hover:bg-secondary transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div>
+<h4 class="font-h3 text-primary group-hover:text-on-secondary-fixed">Backend Infrastructure Lead</h4>
+<p class="font-body-md text-on-surface-variant group-hover:text-on-secondary-fixed/80">Remote (Global)</p>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform group-hover:text-on-secondary-fixed">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Leadership Section -->
+<section class="py-xl px-margin bg-surface-container-high" id="leadership">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-xl">
+<span class="font-label-tech text-label-tech text-secondary font-bold uppercase tracking-widest mb-base block">Our Leadership</span>
+<h2 class="font-h2 text-h2 text-primary">The Visionaries</h2>
+<p class="font-body-lg text-on-surface-variant max-w-xl">Led by pioneers in robotics, logistics, and climate science, our team is committed to safe machine intelligence.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2 group relative bg-primary rounded-xl overflow-hidden aspect-[16/10] shadow-xl">
+<img alt="Dr. Elias Vance" class="w-full h-full object-cover opacity-80 grayscale group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZLhCfkYOxBJA_Od80wzcVkTb8P9odDyDIgluaIl4Gp3TFIWqRNA12ziV7DjWayVVGZbAXDcwTquP0hJlUeudVtzbzc_sVj8XMKY_0UcgY0EWD0Gs-VVhDum_RSirNEBuywlVjtcp7VdSYdR7DUngW2l6hPU1mo3WLqgVT7S9lzgyFeztui1d34ZOBRTWLNhFKytX-VWbKO10Yq680SbuIBkdGBLByHSBtejPIyUz1RW6smbx9iBIPdGm0X0N4KTzPXbBNUDrPPV-G"/>
+<div class="absolute bottom-0 left-0 w-full p-lg bg-gradient-to-t from-primary via-primary/80 to-transparent">
+<span class="font-label-tech text-label-tech text-secondary uppercase mb-xs block font-bold">Founder &amp; CEO</span>
+<h3 class="font-h3 text-h3 text-white">Dr. Elias Vance</h3>
+<p class="font-body-md text-on-primary-container mt-sm">Visionary in AI and Robotics. Former Lead at MIT Autonomy Lab.</p>
+</div>
+</div>
+<div class="bg-white border border-outline-variant/30 rounded-xl p-md flex flex-col hover:shadow-lg transition-all hover:border-secondary/30">
+<div class="aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden border border-outline-variant/10">
+<img alt="Chief Science Officer" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2fdF8fFj9hGC1PjaTbgx1IV7hKLLLI91ESLr6DF0FmztWsJauynuMQaSitGnHXheNMLsxdrhgobLvomuGXBKIDQj48TDKHrvyMil6oeXjNenHSf4TC4RhRxe1xgYV4SMI8k4bNAY0s98ryLCO8bn0kbDvb-wGhoj4vd2Pm-Deco2U7dyTF8arKPnbIPzih7tyNjWQFhZdqxlp5f_oBuFFYH8EMF631EFx_JgxHonphUj-AmZDHbzf1e7FvRUnV6d_IaHFWSfbjNUC"/>
+</div>
+<span class="font-label-tech text-label-tech text-secondary font-bold uppercase block mb-xs">CSO</span>
+<h4 class="font-h3 text-h3 text-primary text-body-md">Sarah Chen</h4>
+<p class="font-body-md text-on-surface-variant text-[14px]">Expert in Neural Systems Architecture.</p>
+</div>
+<div class="bg-white border border-outline-variant/30 rounded-xl p-md flex flex-col hover:shadow-lg transition-all hover:border-secondary/30">
+<div class="aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden border border-outline-variant/10">
+<img alt="Operations Lead" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaYYd4xRwu4BZn4v8qLda4XOZ6V0CYkDgoVLYucDlmMcg2clndLS-8CbYTXEG0H8TmGen3Jv6K2IyUl4AAgQNeDF0MDR9j09qRCVdX6n3xi0RZ3GHZOfxGzyryOv3zmA64dzCNGpbjY5FkRlW0NlDBpD59zh4J6B0-XJfpSk8_9-XZI9Ek75oSiTxcZNXmsDKsno9XbsCcO7bdDpozy8G_34NVkvs78d-sKeixGr73daqtqBeEebG1kxDD9-qTsDGQf5eR3GJ1AmpL"/>
+</div>
+<span class="font-label-tech text-label-tech text-secondary font-bold uppercase block mb-xs">Head of Ops</span>
+<h4 class="font-h3 text-h3 text-primary text-body-md">Marcus Thorne</h4>
+<p class="font-body-md text-on-surface-variant text-[14px]">Logistics Scale &amp; Global Infrastructure.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-[120px] px-margin bg-white">
+<div class="max-w-[1440px] mx-auto p-xl bg-primary rounded-3xl text-center relative overflow-hidden shadow-2xl">
+<div class="relative z-10">
+<h2 class="font-h2 text-h2 text-white mb-md">Join the Autonomous Revolution.</h2>
+<p class="font-body-lg text-on-primary-container mb-lg max-w-2xl mx-auto opacity-90">We are always looking for the brightest minds in machine learning and precision engineering.</p>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-xl py-md font-label-tech text-label-tech uppercase tracking-widest font-bold hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-secondary/20" onclick="document.getElementById('careers').scrollIntoView({behavior: 'smooth'})">
+                        View Open Positions
+                    </button>
+</div>
+<!-- Abstract visual elements -->
+<div class="absolute -bottom-20 -right-20 w-96 h-96 bg-secondary opacity-20 rounded-full blur-[100px]"></div>
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] opacity-40"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative w-full overflow-hidden px-margin py-xl flex flex-col md:flex-row justify-between items-end bg-primary border-t border-white/5">
+<div class="flex flex-col gap-md">
+<div class="h-10 mb-4">
+<img alt="HAVONE Logo" class="h-full w-auto brightness-0 invert" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw"/>
+</div>
+<p class="font-label-tech text-label-tech text-on-primary-fixed-variant opacity-60">© 2024 HAVONE MOBILITY. ALL SYSTEMS AUTONOMOUS.</p>
+</div>
+<div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 bottom-12 w-1/4 h-12 items-center justify-center">
+<div class="w-full h-[1px] bg-secondary/30 relative">
+<div class="absolute left-1/4 top-1/2 -translate-y-1/2 w-8 h-5 bg-secondary flex items-center justify-center rounded-sm shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-[12px] text-black font-bold">local_shipping</span>
+</div>
+</div>
+</div>
+<nav class="flex flex-col md:flex-row gap-md mt-lg md:mt-0">
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary transition-all duration-300 uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary transition-all duration-300 uppercase tracking-widest" href="#">Safety Report</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary transition-all duration-300 uppercase tracking-widest" href="#">Ethics</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary transition-all duration-300 uppercase tracking-widest" href="#">Terms</a>
+</nav>
+</footer>
+<script>
+        let lastScrollY = window.scrollY;
+        let lastTime = Date.now();
+        const needle = document.getElementById('needle');
+        const speedValue = document.getElementById('speed-value');
+
+        function updateSpeedometer() {
+            const currentScrollY = window.scrollY;
+            const currentTime = Date.now();
+            
+            const distance = Math.abs(currentScrollY - lastScrollY);
+            const timeDiff = currentTime - lastTime;
+            
+            // Speed in pixels per frame (roughly)
+            let speed = distance > 0 ? (distance / (timeDiff / 16)) : 0;
+            
+            // Smooth the speed reading
+            const displaySpeed = Math.min(Math.round(speed), 99);
+            speedValue.textContent = displaySpeed;
+
+            // Rotate needle: -90deg is 0, 90deg is max (e.g. 100px/frame)
+            const rotation = -90 + (Math.min(speed, 100) * 1.8);
+            needle.style.transform = `rotate(${rotation}deg)`;
+
+            lastScrollY = currentScrollY;
+            lastTime = currentTime;
+            
+            requestAnimationFrame(updateSpeedometer);
+        }
+
+        updateSpeedometer();
+    </script>
+</body></html>

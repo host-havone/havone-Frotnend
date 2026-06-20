@@ -1,0 +1,342 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Newsroom | AURODRIVE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#8DC313",
+                        "surface-bright": "#f6faf8",
+                        "secondary-container": "#8DC313",
+                        "inverse-surface": "#2d3130",
+                        "surface": "#f6faf8",
+                        "on-background": "#181c1c",
+                        "surface-tint": "#5b5f5e",
+                        "surface-container-high": "#e5e9e7",
+                        "inverse-primary": "#c4c7c5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d7dbd9",
+                        "primary-container": "#181c1b",
+                        "on-secondary-fixed": "#0a2000",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#c4c7c5",
+                        "on-surface-variant": "#434846",
+                        "on-primary-fixed-variant": "#444846",
+                        "tertiary-fixed-dim": "#bfc9c5",
+                        "tertiary": "#000000",
+                        "outline": "#747876",
+                        "primary-fixed": "#e0e3e1",
+                        "primary": "#000000",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#dfe3e1",
+                        "on-tertiary-fixed": "#151d1b",
+                        "on-tertiary-fixed-variant": "#404946",
+                        "background": "#f6faf8",
+                        "on-secondary-fixed-variant": "#245100",
+                        "tertiary-container": "#151d1b",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f0f4f2",
+                        "outline-variant": "#c3c7c5",
+                        "on-primary-container": "#818583",
+                        "on-tertiary-container": "#7d8682",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#8DC313",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#dfe3e1",
+                        "surface-container": "#ebefed",
+                        "secondary": "#8DC313",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#181c1c",
+                        "inverse-on-surface": "#eef2f0",
+                        "tertiary-fixed": "#dbe5e1",
+                        "on-primary-fixed": "#181c1b",
+                        "on-secondary-container": "#347000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "gutter": "24px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "margin": "64px",
+                        "xl": "80px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "display": ["Space Grotesk"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-tech": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h2": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-tech": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f6faf8;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin py-base max-w-[1440px] mx-auto bg-surface/90 dark:bg-primary-container/90 backdrop-blur-md border-b border-outline-variant/20">
+<div class="flex items-center gap-base">
+<img alt="AURODRIVE Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw">
+</div>
+<nav class="hidden md:flex items-center gap-lg"><a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">About Us</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Technology</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Solutions</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">NewsRoom</a></nav>
+<button class="bg-primary text-on-primary px-md py-xs font-label-tech text-label-tech uppercase tracking-widest hover:bg-secondary-fixed transition-colors duration-300 scale-95 active:opacity-80">
+            Contact Us
+        </button>
+</header>
+<main class="mt-[100px] mb-xl px-margin max-w-[1440px] mx-auto">
+<!-- Hero Section -->
+<section class="py-xl border-b border-outline-variant/20 mb-xl relative overflow-hidden">
+<div class="max-w-3xl">
+<div class="flex items-center gap-xs mb-md">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-xs py-1 rounded-xs font-label-tech text-[10px] tracking-widest uppercase" style="background-color: rgb(141, 195, 19);">System: Online</span>
+<div class="h-[1px] w-12 bg-outline-variant"></div>
+</div>
+<h1 class="font-h1 text-h1 mb-md">NEWSROOM &amp; <span class="text-secondary">INTELLIGENCE</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Real-time updates on the evolution of autonomous mobility. From technical breakthroughs to strategic milestones.
+                </p>
+</div>
+<!-- Floating Speedometer Component -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-end gap-xs p-md bg-white border border-outline-variant/20 rounded-lg shadow-xl">
+<span class="font-label-tech text-[10px] text-on-surface-variant uppercase">Innovation Velocity</span>
+<div class="flex items-end gap-xs">
+<span class="font-h1 text-h1 leading-none">124</span>
+<span class="font-label-tech text-secondary font-bold">GB/s</span>
+</div>
+<div class="w-48 h-1 bg-surface-container-high relative mt-xs">
+<div class="absolute left-0 top-0 h-full bg-secondary-fixed w-3/4" style="background-color: rgb(141, 195, 19);"></div>
+</div>
+<span class="font-label-tech text-[10px] text-on-surface-variant mt-xs italic">Telemetry synced via LEO constellation</span>
+</div>
+</section>
+<!-- Press Releases (Main Grid) -->
+<section class="mb-xl">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-h2 text-h2 uppercase tracking-tight">Press Releases</h2>
+<p class="font-label-tech text-label-tech text-on-surface-variant mt-xs">Official statements &amp; strategic updates</p>
+</div>
+<button class="font-label-tech text-label-tech text-primary border-b-2 border-primary pb-1 hover:text-secondary-fixed transition-colors">View Archive</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- PR Card 1 -->
+<div class="bg-white border border-outline-variant/20 p-md flex flex-col justify-between group hover:border-secondary transition-all">
+<div>
+<span class="font-label-tech text-[10px] text-on-surface-variant uppercase mb-md block">Nov 24, 2024</span>
+<h3 class="font-h3 text-h3 mb-sm group-hover:text-secondary transition-colors">AURODRIVE achieves Level 4 Autonomy in dense urban environments.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">The proprietary Ocular-X sensor suite demonstrates unprecedented reliability in rainfall and heavy occlusion scenarios during Berlin pilot trials.</p>
+</div>
+<div class="mt-lg flex items-center justify-between">
+<span class="font-label-tech text-label-tech text-primary uppercase font-bold">Read Full Release</span>
+<span class="material-symbols-outlined text-secondary">arrow_forward_ios</span>
+</div>
+</div>
+<!-- PR Card 2 -->
+<div class="bg-white border border-outline-variant/20 p-md flex flex-col justify-between group hover:border-secondary transition-all">
+<div>
+<span class="font-label-tech text-[10px] text-on-surface-variant uppercase mb-md block">Nov 18, 2024</span>
+<h3 class="font-h3 text-h3 mb-sm group-hover:text-secondary transition-colors">Strategic Partnership: Integration with Neo-Grid Infrastructure.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">Collaborating with municipal energy providers to implement induction-based charging while vehicles wait at intersections.</p>
+</div>
+<div class="mt-lg flex items-center justify-between">
+<span class="font-label-tech text-label-tech text-primary uppercase font-bold">Read Full Release</span>
+<span class="material-symbols-outlined text-secondary">arrow_forward_ios</span>
+</div>
+</div>
+<!-- PR Card 3 -->
+<div class="bg-white border border-outline-variant/20 p-md flex flex-col justify-between group hover:border-secondary transition-all">
+<div>
+<span class="font-label-tech text-[10px] text-on-surface-variant uppercase mb-md block">Nov 05, 2024</span>
+<h3 class="font-h3 text-h3 mb-sm group-hover:text-secondary transition-colors">Expansion Announcement: North American HQ opens in Austin.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">A 50,000 sq ft facility dedicated to R&amp;D and specialized AI training for diverse edge-case scenarios.</p>
+</div>
+<div class="mt-lg flex items-center justify-between">
+<span class="font-label-tech text-label-tech text-primary uppercase font-bold">Read Full Release</span>
+<span class="material-symbols-outlined text-secondary">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Blog & Insights (Bento Grid) -->
+<section class="mb-xl">
+<h2 class="font-h2 text-h2 uppercase tracking-tight mb-lg">Blog &amp; Insights</h2>
+<div class="bento-grid">
+<!-- Large Featured Post -->
+<article class="col-span-12 lg:col-span-8 bg-white border border-outline-variant/20 overflow-hidden group">
+<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="relative h-64 md:h-full overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A highly detailed close-up of an advanced autonomous vehicle sensor array, featuring sleek carbon fiber housing and glowing emerald indicator lights. The background is a clean, bright laboratory environment with soft, high-key lighting that emphasizes a modern light-mode aesthetic. The composition is precise and technical, reflecting a visionary and uncompromisingly safe brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHPiIiWPowisCU8Cm06HT2MicY6PbPK86j_I2ajfjz8nINKSuyZmlZZj2X5AyuZiY6Udk52dL2yjRTkGW2oCyI7jLgEGxwM9_H-3nsFl1kP-xeD6pORA5jf30dIzDumrqbc3uJj4WSBY0K4m3svCyhue-bhR1jB7uAafZfs-Bw4BG9CNmblQa-rz9kbXaeIBQQTKKtApUZNdRmY0a8NxffaS-8m4BZXZIPTYIET4PJOKvkBIx_6ZeY4gVJSwtg-h3jiafZxxQ-r56J">
+<div class="absolute top-md left-md">
+<span class="bg-primary text-white font-label-tech text-[10px] px-sm py-1 uppercase tracking-widest">Technical Deep-Dive</span>
+</div>
+</div>
+<div class="p-lg flex flex-col justify-center">
+<span class="font-label-tech text-[10px] text-on-surface-variant uppercase mb-sm">AI Architecture</span>
+<h3 class="font-h2 text-h2 mb-md leading-tight">Beyond LIDAR: The fusion of multi-spectral neural networks.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">How AURODRIVE's latest update reduces compute latency by 40% while increasing object classification accuracy in extreme weather conditions.</p>
+<button class="bg-primary text-on-primary w-fit px-md py-xs font-label-tech text-label-tech uppercase group-hover:bg-secondary-fixed-dim transition-colors">Read Article</button>
+</div>
+</div>
+</article>
+<!-- Small Grid Items -->
+<article class="col-span-12 md:col-span-6 lg:col-span-4 bg-white border border-outline-variant/20 p-md group">
+<div class="flex flex-col h-full">
+<div class="mb-md">
+<span class="font-label-tech text-[10px] text-secondary uppercase font-bold tracking-tighter">SAFETY REPORT</span>
+</div>
+<h3 class="font-h3 text-h3 mb-sm">Ethics of autonomy: Navigating the 'Social Contract'.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">A discussion on how AI decision frameworks are calibrated for human safety priorities.</p>
+<div class="mt-auto pt-md border-t border-outline-variant/10">
+<span class="font-label-tech text-label-tech text-on-surface-variant">6 min read</span>
+</div>
+</div>
+</article>
+<article class="col-span-12 md:col-span-6 lg:col-span-4 bg-white border border-outline-variant/20 p-md group">
+<div class="flex flex-col h-full">
+<div class="mb-md">
+<span class="font-label-tech text-[10px] text-on-surface-variant uppercase">INTERVIEW</span>
+</div>
+<h3 class="font-h3 text-h3 mb-sm">Dr. Elena Thorne on the Future of V2X.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Our Chief Science Officer explores why vehicles need to talk to more than just each other.</p>
+<div class="mt-auto pt-md border-t border-outline-variant/10">
+<span class="font-label-tech text-label-tech text-on-surface-variant">12 min read</span>
+</div>
+</div>
+</article>
+<article class="col-span-12 lg:col-span-4 bg-primary text-on-primary p-md relative overflow-hidden group">
+<div class="absolute -right-12 -bottom-12 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">sensors</span>
+</div>
+<div class="relative z-10">
+<span class="font-label-tech text-[10px] text-secondary-fixed uppercase font-bold mb-md block" style="color: rgb(141, 195, 19);">Newsletter</span>
+<h3 class="font-h3 text-h3 mb-md">Stay synchronized with the future.</h3>
+<p class="font-body-md text-body-md text-primary-fixed mb-lg">Weekly technical digests, safety reports, and innovation alerts delivered to your encrypted inbox.</p>
+<div class="flex gap-xs">
+<input class="bg-transparent border border-outline-variant/30 text-white font-label-tech text-label-tech flex-1 focus:ring-secondary focus:border-secondary px-sm" placeholder="email@address.com" type="email">
+<button class="bg-secondary-fixed text-on-secondary-fixed px-md py-sm font-label-tech text-label-tech uppercase font-bold hover:bg-white transition-colors" style="background-color: rgb(141, 195, 19);">Join</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Upcoming Events -->
+<section class="mb-xl">
+<h2 class="font-h2 text-h2 uppercase tracking-tight mb-lg">Upcoming Events</h2>
+<div class="space-y-base">
+<!-- Event Row -->
+<div class="bg-white border border-outline-variant/20 flex flex-col md:flex-row items-center hover:bg-surface-container-low transition-colors">
+<div class="p-md md:w-48 text-center border-b md:border-b-0 md:border-r border-outline-variant/20">
+<span class="font-label-tech text-label-tech text-on-surface-variant block uppercase">Jan 12-15</span>
+<span class="font-h3 text-h3">2025</span>
+</div>
+<div class="p-md flex-1">
+<h4 class="font-h3 text-h3">Global Autonomy Summit</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Las Vegas, NV — Main Stage Keynote: "The Post-Driving Era"</p>
+</div>
+<div class="p-md">
+<button class="border border-primary px-md py-xs font-label-tech text-label-tech uppercase hover:bg-primary hover:text-white transition-all">RSVP / DETAILS</button>
+</div>
+</div>
+<!-- Event Row -->
+<div class="bg-white border border-outline-variant/20 flex flex-col md:flex-row items-center hover:bg-surface-container-low transition-colors">
+<div class="p-md md:w-48 text-center border-b md:border-b-0 md:border-r border-outline-variant/20">
+<span class="font-label-tech text-label-tech text-on-surface-variant block uppercase">Feb 02</span>
+<span class="font-h3 text-h3">2025</span>
+</div>
+<div class="p-md flex-1">
+<h4 class="font-h3 text-h3">Investor Webcast: Q4 Earnings</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Virtual Event — Technical roadmap review and hardware scalability report.</p>
+</div>
+<div class="p-md">
+<button class="border border-primary px-md py-xs font-label-tech text-label-tech uppercase hover:bg-primary hover:text-white transition-all">REGISTER</button>
+</div>
+</div>
+<!-- Event Row -->
+<div class="bg-white border border-outline-variant/20 flex flex-col md:flex-row items-center hover:bg-surface-container-low transition-colors">
+<div class="p-md md:w-48 text-center border-b md:border-b-0 md:border-r border-outline-variant/20">
+<span class="font-label-tech text-label-tech text-on-surface-variant block uppercase">Mar 19</span>
+<span class="font-h3 text-h3">2025</span>
+</div>
+<div class="p-md flex-1">
+<h4 class="font-h3 text-h3">Safety &amp; Ethics Workshop</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">London, UK — Collaborative session with EU mobility regulators.</p>
+</div>
+<div class="p-md">
+<button class="border border-primary px-md py-xs font-label-tech text-label-tech uppercase hover:bg-primary hover:text-white transition-all">DETAILS</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative w-full overflow-hidden px-margin py-xl flex flex-col md:flex-row justify-between items-end bg-primary dark:bg-tertiary">
+<!-- Abstract Background Text for aesthetic -->
+<div class="absolute -top-10 left-0 opacity-10 pointer-events-none select-none">
+<span class="font-h1 text-[120px] text-white/20 whitespace-nowrap font-black">PRECISION MOBILITY</span>
+</div>
+<div class="relative z-10 flex flex-col gap-md mb-lg md:mb-0">
+<div class="flex items-center gap-xs">
+<img alt="AURODRIVE Logo" class="h-base w-auto h-lg" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw">
+</div>
+<p class="font-label-tech text-label-tech text-on-primary-fixed-variant uppercase">© 2024 AURODRIVE. ALL SYSTEMS AUTONOMOUS.</p>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row gap-lg items-end md:items-center">
+<nav class="flex gap-md">
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-colors" href="#">Safety Report</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-colors" href="#">Ethics</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-colors" href="#">Terms</a>
+</nav>
+<div class="flex gap-xs">
+<span class="bg-secondary-fixed-dim/20 text-secondary-fixed-dim p-2 rounded-full material-symbols-outlined text-sm" style="background-color: rgba(141, 195, 19, 0.2); color: rgb(141, 195, 19);">share</span>
+<span class="bg-secondary-fixed-dim/20 text-secondary-fixed-dim p-2 rounded-full material-symbols-outlined text-sm" style="background-color: rgba(141, 195, 19, 0.2); color: rgb(141, 195, 19);">rss_feed</span>
+</div>
+</div>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-fixed-dim": "#8DC313",
+                  "surface-bright": "#f6faf8",
+                  "secondary-container": "#8DC313",
+                  "inverse-surface": "#2d3130",
+                  "surface": "#f6faf8",
+                  "on-background": "#181c1c",
+                  "surface-tint": "#5b5f5e",
+                  "surface-container-high": "#e5e9e7",
+                  "inverse-primary": "#c4c7c5",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-dim": "#d7dbd9",
+                  "primary-container": "#181c1b",
+                  "on-secondary-fixed": "#0a2000",
+                  "on-tertiary": "#ffffff",
+                  "on-secondary": "#ffffff",
+                  "primary-fixed-dim": "#c4c7c5",
+                  "on-surface-variant": "#434846",
+                  "on-primary-fixed-variant": "#444846",
+                  "tertiary-fixed-dim": "#bfc9c5",
+                  "tertiary": "#000000",
+                  "outline": "#747876",
+                  "primary-fixed": "#e0e3e1",
+                  "primary": "#000000",
+                  "on-error": "#ffffff",
+                  "surface-container-highest": "#dfe3e1",
+                  "on-tertiary-fixed": "#151d1b",
+                  "on-tertiary-fixed-variant": "#404946",
+                  "background": "#f6faf8",
+                  "on-secondary-fixed-variant": "#245100",
+                  "tertiary-container": "#151d1b",
+                  "error-container": "#ffdad6",
+                  "surface-container-low": "#f0f4f2",
+                  "outline-variant": "#c3c7c5",
+                  "on-primary-container": "#818583",
+                  "on-tertiary-container": "#7d8682",
+                  "error": "#ba1a1a",
+                  "secondary-fixed": "#8DC313",
+                  "on-error-container": "#93000a",
+                  "surface-variant": "#dfe3e1",
+                  "surface-container": "#ebefed",
+                  "secondary": "#8DC313",
+                  "on-primary": "#ffffff",
+                  "on-surface": "#181c1c",
+                  "inverse-on-surface": "#eef2f0",
+                  "tertiary-fixed": "#dbe5e1",
+                  "on-primary-fixed": "#181c1b",
+                  "on-secondary-container": "#245100"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "md": "24px",
+                  "gutter": "24px",
+                  "lg": "48px",
+                  "base": "8px",
+                  "xs": "4px",
+                  "margin": "64px",
+                  "xl": "80px",
+                  "sm": "12px"
+          },
+          "fontFamily": {
+                  "h3": ["Inter"],
+                  "h1": ["Inter"],
+                  "h2": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "label-tech": ["Space Grotesk"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600"}],
+                  "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "h2": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                  "label-tech": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(90, 99, 96, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin py-base max-w-[1440px] mx-auto bg-surface/90 backdrop-blur-md border-b border-outline-variant/20">
+<div class="flex items-center gap-base"><img alt="HAVONE MOBILITY" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw"/></div>
+<nav class="hidden md:flex gap-lg items-center"><a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">About Us</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-secondary-fixed border-b-2 border-secondary-fixed pb-1" href="#">Technology</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Solutions</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Newsletter</a></nav>
+<button class="bg-primary text-on-primary px-md py-sm font-label-tech uppercase tracking-widest hover:border-b-2 hover:border-secondary-fixed transition-all duration-200">
+      Contact Us
+    </button>
+</header>
+<main class="pt-xl">
+<!-- Hero Section: Vision Suite -->
+<section class="px-margin py-xl max-w-[1440px] mx-auto border-b border-outline-variant/10">
+<div class="grid grid-cols-12 gap-gutter items-center py-lg">
+<div class="col-span-12 md:col-span-5">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="font-label-tech text-label-tech text-secondary uppercase">The Vision Suite</span>
+</div>
+<h1 class="font-h1 text-h1 text-primary mb-md">Machine Intelligence with Human Clarity.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">
+            AURODRIVE's neural architecture processes 1.2 Petabytes of sensor data every second, creating a 360-degree fail-safe perception field that outpaces human reaction time by 400%.
+          </p>
+<div class="flex gap-md">
+<div class="bg-surface-container border border-outline-variant/30 p-md rounded-lg flex-1">
+<span class="font-label-tech text-label-tech text-primary block mb-xs">LIDAR PRECISION</span>
+<span class="font-h3 text-h3 text-primary">0.03mm</span>
+</div>
+<div class="bg-surface-container border border-outline-variant/30 p-md rounded-lg flex-1">
+<span class="font-label-tech text-label-tech text-primary block mb-xs">SENSOR LATENCY</span>
+<span class="font-h3 text-h3 text-primary">&lt;2ms</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7 relative">
+<div class="aspect-video bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/20 shadow-xl">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a futuristic autonomous vehicle sensor array, featuring sleek black housing and crystalline camera lenses. The lighting is cold and precise, reflecting off the metallic surfaces of the LIDAR module. The aesthetic is ultra-clean and high-tech, using a palette of slate greys, deep blacks, and a subtle glowing green indicator light. The mood is one of extreme technical authority and safety." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUessv8n1WAzGd6swV1BD4uQu66qg0qKjAgdcPCu1dg1WlOQRomzmX0GscRrY4F32xYJYoKaOndLRquGDIJLZfu-PCfsZPDndv27OAT8K0-Sc5LTEbpCwZ-Yr6K03Z_0k8s5vHktRpCjwgEOyXKLRZ8p69xHZhVVqmzMC23lkWbZtvE1n-5KQge5GT0ze_doqOQf48CJwPtOr2LnBO2YYec0KFou0TZkrQkoDFmNHnaFzynrmqsO37oc7SfJhxmzvcAgfjxP0Uip53"/>
+<!-- Telemetry Chip -->
+<div class="absolute top-md right-md glass-panel px-md py-sm rounded-full flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span class="font-label-tech text-label-tech text-primary">LIDAR: ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Version Controlled Hardware Gallery -->
+<section class="bg-surface-container-low py-xl px-margin border-y border-outline-variant/20">
+<div class="max-w-[1440px] mx-auto py-lg">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl border-b border-outline-variant/30 pb-md">
+<div>
+<span class="font-label-tech text-label-tech text-secondary uppercase">Hardware Lineage</span>
+<h2 class="font-h2 text-h2 text-primary mt-xs">Version Evolution</h2>
+</div>
+<div class="flex gap-lg mt-md md:mt-0">
+<button class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary pb-base">V1.0 Legacy</button>
+<button class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary pb-base">V2.0 Core</button>
+<button class="font-label-tech text-label-tech uppercase tracking-widest text-secondary-fixed border-b-2 border-secondary-fixed pb-base">V3.0 Apex</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Spec Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/20 p-lg rounded-xl transition-all hover:shadow-xl group">
+<div class="w-12 h-12 bg-primary rounded flex items-center justify-center mb-md group-hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-surface" style="font-variation-settings: 'FILL' 1;">memory</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-sm">Neural Core V3</h3>
+<p class="text-on-surface-variant mb-md">Our custom silicon architecture optimized for real-time spatial reasoning and object prediction.</p>
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm font-label-tech text-label-tech text-primary">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> 
+                800 TOPS PROCESSING
+              </li>
+<li class="flex items-center gap-sm font-label-tech text-label-tech text-primary">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span> 
+                LIQUID-COOLED THERMALS
+              </li>
+</ul>
+</div>
+<!-- Large Visualization -->
+<div class="md:col-span-2 bg-primary p-lg rounded-xl relative overflow-hidden flex items-center justify-center min-h-[400px]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40" data-alt="A macro photograph of a sophisticated computer chip with glowing green circuitry pathways etched into dark obsidian-like material. The lighting is dramatic, highlighting the microscopic complexity of the hardware architecture. The image conveys extreme speed and computing power within a clean, minimalist tech environment using deep blacks and signal green highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNiQUtKPfxpFgcyuHmSBJWxnNFjU_j9QhnVE3t7TDihfc3Xc9eBPYzG_ab8n7kKGcmmoB46cFu67DPzp7uNEi3muMIpfK7R_4tejmfDRwoEfwVYHOJhRxVMEdpjRPynbk4AxPRdA2088GbPEaTed5fqJyEGd4K-hvnO1wz5LwcMx-1DovSxmcGYy4uBsI27hQB_xBUCFG56Y2tRFO9OV4Hypf1M5bO_3ojwrY_woBn7vaM1rHNVf6xEK_Hzzv7444A1Q3VHDLboi-6"/>
+<div class="relative z-10 text-center">
+<div class="bg-secondary text-primary font-label-tech text-label-tech px-md py-xs inline-block rounded mb-md uppercase tracking-tighter">Current Production State</div>
+<h2 class="font-h1 text-h1 text-surface-bright mb-md">Apex Hardware V3.0</h2>
+<button class="bg-surface text-primary px-xl py-md font-label-tech uppercase tracking-widest hover:bg-secondary-fixed transition-colors">View Full Datasheet</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- UI Simulator Section -->
+<section class="py-xl px-margin bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto py-lg">
+<div class="text-center mb-xl">
+<span class="font-label-tech text-label-tech text-secondary uppercase">Interface Experience</span>
+<h2 class="font-h2 text-h2 text-primary">The Digital Cockpit</h2>
+</div>
+<div class="relative w-full max-w-5xl mx-auto aspect-[21/9] bg-inverse-surface rounded-[40px] border-[12px] border-primary-container shadow-2xl overflow-hidden group">
+<!-- Simulator Background (The Road View) -->
+<div class="absolute inset-0">
+<img class="w-full h-full object-cover opacity-80" data-alt="A first-person perspective from inside a driverless vehicle moving through a clean, modern city at dusk. The dashboard is visible at the bottom of the frame, showing futuristic glowing green overlays of lane lines and identified obstacles. The lighting is cinematic with deep blue tones and vibrant signal green highlights representing machine vision. The style is crisp, high-contrast, and visionary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVDkIN1FneXqvPcdA0NiDKMIg4_WOt02kXUjrJte_YC1lOYNXWa2d0LKSMozijS1sGFpHqYg8M3pFSLeqw7KVddxA9jdcUBtsKkjjwnMA0qjB8pAO4JtssYvdkJ4EHizIduW1-Y3ueTiM2AXdvzba9Mc9258qAqhIYBiN1Dzevt8iHQu65iCdb_KaPpPgWTirAlgqYq5OQcsBrewFFOt87-1wvOClGyJIvvDr2uW8itpWhzlTKtKnNYBmai4Uvqrz-3HJ6kReoJGV8"/>
+</div>
+<!-- Overlay UI Elements -->
+<div class="absolute inset-0 p-lg flex flex-col justify-between">
+<!-- Top HUD -->
+<div class="flex justify-between items-start">
+<div class="glass-panel px-md py-sm rounded-lg">
+<span class="font-label-tech text-label-tech text-primary block">DESTINATION</span>
+<span class="font-h3 text-h3 text-primary">Innovation Hub P4</span>
+</div>
+<div class="flex gap-sm">
+<div class="glass-panel w-12 h-12 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">wifi</span>
+</div>
+<div class="glass-panel w-12 h-12 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">security</span>
+</div>
+</div>
+</div>
+<!-- Floating Speedometer Component -->
+<div class="flex justify-center">
+<div class="bg-primary/90 text-surface p-xl rounded-full border-4 border-secondary-fixed/30 shadow-2xl flex flex-col items-center justify-center w-48 h-48 backdrop-blur-xl">
+<span class="font-label-tech text-label-tech text-secondary-fixed uppercase tracking-widest mb-xs">SPEED</span>
+<span class="font-h1 text-[64px] leading-none font-black">64</span>
+<span class="font-label-tech text-label-tech text-secondary-fixed uppercase tracking-widest mt-xs">KM/H</span>
+</div>
+</div>
+<!-- Bottom Control Bar -->
+<div class="flex justify-between items-end">
+<div class="flex gap-md">
+<div class="glass-panel px-md py-sm rounded-lg flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">battery_charging_80</span>
+<div>
+<span class="font-label-tech text-[10px] text-on-surface-variant block uppercase">Range</span>
+<span class="font-h3 text-h3 text-primary leading-none">420km</span>
+</div>
+</div>
+<div class="glass-panel px-md py-sm rounded-lg flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">thermostat</span>
+<div>
+<span class="font-label-tech text-[10px] text-on-surface-variant block uppercase">Cabin</span>
+<span class="font-h3 text-h3 text-primary leading-none">21°C</span>
+</div>
+</div>
+</div>
+<button class="bg-secondary text-primary px-xl py-md rounded-xl font-label-tech uppercase tracking-widest shadow-lg hover:scale-105 transition-transform flex items-center gap-md">
+<span class="material-symbols-outlined">play_arrow</span>
+                Engage Pilot
+              </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Breakdown: Vision Suite Detail -->
+<section class="py-xl px-margin bg-surface-container-high border-t border-outline-variant/30">
+<div class="max-w-[1440px] mx-auto py-lg">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-4 space-y-md">
+<h2 class="font-h2 text-h2 text-primary">Sensor Fusion Topology</h2>
+<p class="text-on-surface-variant">The Vision Suite doesn't just see—it understands. By layering multiple sensor types, we create a redundant digital twin of the environment.</p>
+<div class="space-y-base">
+<div class="bg-surface-container-lowest p-md border border-outline-variant/30 rounded-lg">
+<h4 class="font-label-tech text-label-tech text-primary mb-xs uppercase">12X ULTRA-HD CAMERAS</h4>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed h-full w-[95%]"></div>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-xs">Visual recognition &amp; color depth for signs and signals.</p>
+</div>
+<div class="bg-surface-container-lowest p-md border border-outline-variant/30 rounded-lg">
+<h4 class="font-label-tech text-label-tech text-primary mb-xs uppercase">5X LONG-RANGE RADAR</h4>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed h-full w-[88%]"></div>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-xs">Penetrates fog, rain, and snow at up to 300 meters.</p>
+</div>
+<div class="bg-surface-container-lowest p-md border border-outline-variant/30 rounded-lg">
+<h4 class="font-label-tech text-label-tech text-primary mb-xs uppercase">HIGH-RES LIDAR</h4>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed h-full w-[99%]"></div>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-xs">Real-time 3D mapping with millimetric precision.</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-8">
+<div class="bg-primary rounded-xl p-md h-full flex items-center justify-center relative group overflow-hidden">
+<img class="w-full h-full object-cover rounded-lg opacity-60" data-alt="An artistic rendering of an autonomous vehicle's sensor view, showing the car surrounded by colorful laser point clouds and bounding boxes around pedestrians and other vehicles. The background is a dark, abstract city street. The aesthetic is purely data-driven, using a neon green and electric blue palette on a black background to simulate machine vision. The mood is precise, analytical, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXZQx8Au5HGoQCxq0iFDVYXxw_LaulRe02cuA_ApFGSHt0Jl0Sd_lwFrmDhb3GpMaWZNz4kmW8kyHjJ57f7li8NGseZKBwDzNu0s8FvUUAptPqQkACSpLnc2vr9iNfzZH2pMk_r2Tswb42WTsxnnfJbNw2IAPomgc6FLfInKJFKmsG3of-y0m25qnErPMTHhdW-VxY7YCeyJ0mzWEx5qgGonE5eo2iDWAVCoXcyWkIgX28_hZp5epeYJDHYjG3gWxVtcDDmzY7RScb"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="bg-surface-bright/20 backdrop-blur-md border border-surface-bright/30 p-lg rounded-full text-surface-bright hover:bg-secondary hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+</div>
+<div class="absolute bottom-md left-md bg-secondary px-sm py-xs font-label-tech text-[10px] text-primary uppercase font-bold">Live Point Cloud Stream v3.0</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative w-full overflow-hidden px-margin py-xl flex flex-col md:flex-row justify-between items-end bg-primary dark:bg-tertiary">
+<div class="flex flex-col gap-md">
+<img alt="HAVONE MOBILITY" class="h-12 w-auto mb-md" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw"/>
+<p class="font-label-tech text-label-tech text-on-primary-fixed-variant">© 2024 AURODRIVE. ALL SYSTEMS AUTONOMOUS.</p>
+</div>
+<div class="flex gap-lg mt-xl md:mt-0">
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-all duration-500" href="#">Privacy Policy</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-all duration-500" href="#">Safety Report</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-all duration-500" href="#">Ethics</a>
+<a class="font-label-tech text-label-tech text-on-primary-fixed-variant hover:text-secondary-fixed transition-all duration-500" href="#">Terms</a>
+</div>
+</footer>
+</body></html>

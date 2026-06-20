@@ -1,0 +1,21 @@
+<svg viewBox="0 0 1090 810" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Truck Container -->
+  <rect x="291" y="380" width="799" height="270" fill="#00FF88" rx="0"/>
+
+  <!-- Truck Cab -->
+  <path d="M 0 442 L 0 610 L 220 775 L 220 650 L 291 610 L 291 380 L 165 380 L 0 442 Z" fill="#00FF88"/>
+
+  <!-- Wheel Wells -->
+  <path d="M 220 650 C 220 650 220 775 330 775 C 330 775 440 775 440 650" fill="black"/>
+  <path d="M 725 650 C 725 650 725 810 900 810 C 900 810 1075 810 1075 650" fill="black"/>
+
+  <!-- Wheels -->
+  <circle cx="330" cy="750" r="110" fill="#00FF88" stroke="black" stroke-width="20"/>
+  <circle cx="330" cy="750" r="60" fill="black"/>
+
+  <circle cx="800" cy="750" r="110" fill="#00FF88" stroke="black" stroke-width="20"/>
+  <circle cx="800" cy="750" r="60" fill="black"/>
+
+  <circle cx="970" cy="750" r="110" fill="#00FF88" stroke="black" stroke-width="20"/>
+  <circle cx="970" cy="750" r="60" fill="black"/>
+</svg>

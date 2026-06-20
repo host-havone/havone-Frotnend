@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#8DC313",
+            "surface-bright": "#f6faf8",
+            "secondary-container": "#8DC313",
+            "inverse-surface": "#2d3130",
+            "surface": "#f6faf8",
+            "on-background": "#181c1c",
+            "surface-tint": "#5b5f5e",
+            "surface-container-high": "#e5e9e7",
+            "inverse-primary": "#c4c7c5",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#d7dbd9",
+            "primary-container": "#181c1b",
+            "on-secondary-fixed": "#0a2000",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#c4c7c5",
+            "on-surface-variant": "#434846",
+            "on-primary-fixed-variant": "#444846",
+            "tertiary-fixed-dim": "#bfc9c5",
+            "tertiary": "#000000",
+            "outline": "#747876",
+            "primary-fixed": "#e0e3e1",
+            "primary": "#000000",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#dfe3e1",
+            "on-tertiary-fixed": "#151d1b",
+            "on-tertiary-fixed-variant": "#404946",
+            "background": "#f6faf8",
+            "on-secondary-fixed-variant": "#245100",
+            "tertiary-container": "#151d1b",
+            "error-container": "#ffdad6",
+            "surface-container-low": "#f0f4f2",
+            "outline-variant": "#c3c7c5",
+            "on-primary-container": "#818583",
+            "on-tertiary-container": "#7d8682",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#8DC313",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dfe3e1",
+            "surface-container": "#ebefed",
+            "secondary": "#8DC313",
+            "on-primary": "#ffffff",
+            "on-surface": "#181c1c",
+            "inverse-on-surface": "#eef2f0",
+            "tertiary-fixed": "#dbe5e1",
+            "on-primary-fixed": "#181c1b",
+            "on-secondary-container": "#347000",
+            "env-bg": "#0B0F0E",
+            "env-accent": "#8DC313"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "md": "24px",
+            "gutter": "24px",
+            "lg": "48px",
+            "base": "8px",
+            "xs": "4px",
+            "margin": "64px",
+            "xl": "80px",
+            "sm": "12px"
+          },
+          "fontFamily": {
+            "h3": ["Inter"],
+            "h1": ["Inter"],
+            "h2": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-tech": ["Space Grotesk"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600"}],
+            "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "h2": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-tech": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .mission-control-bg {
+      background-image: radial-gradient(circle at 2px 2px, rgba(116, 120, 118, 0.05) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    .glitch-subtle:hover {
+      text-shadow: 2px 0 #8DC313, -2px 0 #ff3b30;
+    }
+    .env-mesh {
+        background-image: linear-gradient(rgba(141, 195, 19, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(141, 195, 19, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+    .env-border {
+        border: 1px solid rgba(141, 195, 19, 0.3);
+        box-shadow: 0 0 15px rgba(141, 195, 19, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-background font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Success Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary/80 backdrop-blur-sm p-md" id="successModal">
+<div class="bg-env-bg border-2 border-env-accent max-w-md w-full p-lg rounded-xl shadow-[0_0_50px_rgba(141,195,19,0.2)] flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-env-accent/10 border border-env-accent flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-env-accent text-4xl">task_alt</span>
+</div>
+<h3 class="font-h3 text-env-accent uppercase tracking-widest mb-sm">Transmission Confirmed</h3>
+<p class="font-label-tech text-surface-container-highest text-sm mb-lg">Your message or query is received. You will be contacted within 48 hours.</p>
+<button class="bg-env-accent text-env-bg px-xl py-xs font-label-tech uppercase tracking-tighter text-label-tech rounded-lg hover:brightness-110 transition-all active:scale-95" onclick="document.getElementById('successModal').classList.add('hidden')">Close Terminal</button>
+</div>
+</div>
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin py-base max-w-[1440px] mx-auto bg-white/90 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex items-center gap-base">
+<img alt="AURODRIVE Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw"/>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">About Us</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Technology</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Solutions</a>
+<a class="font-label-tech text-label-tech uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Newsletter</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface hover:text-secondary transition-colors">hub</button>
+<button class="bg-primary text-on-primary px-md py-xs font-label-tech uppercase tracking-tighter text-label-tech rounded-lg hover:bg-secondary transition-all active:scale-95">Systems Check</button>
+</div>
+</header>
+<main class="pt-xl pb-xl mission-control-bg">
+<!-- Hero Section -->
+<section class="max-w-[1440px] mx-auto px-margin mt-xl mb-xl">
+<div class="flex flex-col md:flex-row justify-between items-end gap-md border-l-4 border-secondary pl-md">
+<div>
+<span class="font-label-tech text-label-tech text-secondary tracking-[0.2em] uppercase">Communication Uplink</span>
+<h1 class="font-h1 text-h1 uppercase mt-xs">Mission Control</h1>
+</div>
+<div class="hidden md:block text-right">
+<p class="font-label-tech text-label-tech text-outline">LAT: 37.7749° N</p>
+<p class="font-label-tech text-label-tech text-outline">LONG: 122.4194° W</p>
+</div>
+</div>
+</section>
+<!-- Content Sections with distinct backgrounds -->
+<div class="max-w-[1440px] mx-auto flex flex-col gap-xl">
+<!-- Telemetry & Map Section -->
+<section class="bg-surface-container-low/50 py-xl px-margin border-y border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Interactive Map Module -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden relative group shadow-sm">
+<div class="absolute top-md left-md z-10 flex flex-col gap-xs">
+<div class="bg-primary text-on-primary px-sm py-xs flex items-center gap-xs rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-tech text-label-tech uppercase">Global Node: San Francisco</span>
+</div>
+<div class="bg-white/80 backdrop-blur-sm p-sm rounded-lg border border-outline-variant/20 shadow-sm">
+<span class="font-label-tech text-label-tech block text-outline uppercase text-[10px]">Active Nodes</span>
+<div class="flex gap-xs mt-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+</div>
+</div>
+<div class="w-full h-[500px] bg-surface-dim relative">
+<img class="w-full h-full object-cover grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsT5sh_mGJRSFlBK7yqz1e4a2kNZmJgmRVxjWPci4t0JyLW3YK7OsyP3rNtYmzLO_c_pZPOJsW1srFEEALCUODn44KcYekcVRMTxFfLzkeLKn8xgMtRHUfvpXLR9ML30pBGS-ONVA6QiZe9B36LAcMjiVlccNECIMDtZB-9HG9dDciKvM8OUdbkoGLk5fOwGIjNvv-bB6sjla8CE240uT-8HbfKztoeS20M6vwn8ywq1BsrxKhdw-No6q7Nf5VJpBpvuMKu7HGW-l9"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<!-- Map Pin Pulse -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-20 h-20 bg-secondary/20 rounded-full animate-ping"></div>
+<div class="absolute w-12 h-12 bg-secondary/40 rounded-full"></div>
+<div class="relative w-4 h-4 bg-primary rounded-full border-2 border-secondary"></div>
+</div>
+</div>
+</div>
+<div class="p-md flex justify-between items-center border-t border-outline-variant/20 bg-white">
+<div class="flex gap-lg">
+<div>
+<p class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Signal Strength</p>
+<p class="font-h3 text-h3 font-black">99.8%</p>
+</div>
+<div>
+<p class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Ping</p>
+<p class="font-h3 text-h3 font-black">12ms</p>
+</div>
+</div>
+<button class="flex items-center gap-xs font-label-tech text-label-tech uppercase hover:text-secondary transition-colors font-bold">
+                Switch Node <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Floating Speedometer & Telemetry Module -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-primary text-on-primary p-md rounded-xl flex flex-col justify-between h-full min-h-[240px] relative overflow-hidden shadow-lg">
+<div class="relative z-10">
+<span class="font-label-tech text-label-tech text-secondary uppercase tracking-widest font-bold">System Velocity</span>
+<div class="flex items-baseline gap-xs mt-md">
+<span class="font-h1 text-[64px] font-black leading-none">128</span>
+<span class="font-label-tech text-label-tech opacity-60">TB/S</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col gap-xs">
+<div class="h-1 bg-on-primary/10 w-full rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%]"></div>
+</div>
+<p class="font-label-tech text-label-tech uppercase text-[10px] opacity-60">Inquiry Processing Load</p>
+</div>
+<svg class="absolute -right-10 -bottom-10 opacity-20 w-48 h-48 text-secondary" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="70" stroke-width="2"></circle>
+<path d="M 50 50 L 80 20" stroke="currentColor" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+<div class="bg-surface-container-high border border-outline-variant/30 p-md rounded-xl shadow-inner">
+<span class="font-label-tech text-label-tech text-outline uppercase block mb-md font-bold">Telemetry Status</span>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-lowest p-sm border border-outline-variant/20 rounded-lg shadow-sm">
+<p class="font-label-tech text-[10px] uppercase text-outline">Lidar</p>
+<p class="font-label-tech text-secondary font-bold">ACTIVE</p>
+</div>
+<div class="bg-surface-container-lowest p-sm border border-outline-variant/20 rounded-lg shadow-sm">
+<p class="font-label-tech text-[10px] uppercase text-outline">Fleet</p>
+<p class="font-label-tech text-on-surface font-bold">2.4k UNITS</p>
+</div>
+<div class="bg-surface-container-lowest p-sm border border-outline-variant/20 rounded-lg shadow-sm">
+<p class="font-label-tech text-[10px] uppercase text-outline">Safety</p>
+<p class="font-label-tech text-secondary font-bold">OPTIMAL</p>
+</div>
+<div class="bg-surface-container-lowest p-sm border border-outline-variant/20 rounded-lg shadow-sm">
+<p class="font-label-tech text-[10px] uppercase text-outline">Response</p>
+<p class="font-label-tech text-on-surface font-bold">&lt; 2 MIN</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Inquiry Section -->
+<section class="py-xl px-margin">
+<div class="bg-white border border-outline-variant/50 rounded-2xl p-lg grid grid-cols-1 md:grid-cols-2 gap-xl relative overflow-hidden shadow-xl">
+<div class="absolute top-0 right-0 p-md pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant/10 text-[160px]" style="font-variation-settings: 'wght' 100;">terminal</span>
+</div>
+<div>
+<h2 class="font-h2 text-h2 uppercase mb-md border-b-2 border-secondary inline-block pb-1">Initialize Inquiry</h2>
+<p class="text-on-surface-variant max-w-md mb-lg">
+              Submit your technical specifications or partnership request. Our autonomous triage system will route your inquiry to the appropriate department within 128 milliseconds.
+            </p>
+<!-- Digital Envelope Section -->
+<div class="relative bg-env-bg rounded-xl p-lg env-border env-mesh overflow-hidden mb-lg shadow-2xl">
+<div class="absolute top-0 right-0 border-l border-b border-env-accent/30 p-xs bg-env-accent/5">
+<span class="font-label-tech text-[10px] text-env-accent tracking-tighter uppercase opacity-50">Secure Transmission v.2.4</span>
+</div>
+<div class="space-y-md relative z-10">
+<div class="border-l-2 border-env-accent pl-md">
+<p class="font-label-tech text-env-accent/60 text-[9px] uppercase tracking-widest mb-xs">Originating Node // Sender</p>
+<p class="font-body-md font-bold text-white uppercase tracking-tight">AURODRIVE Global Node</p>
+<p class="font-label-tech text-env-accent text-[12px] uppercase">San Francisco, CA 94103</p>
+</div>
+<div class="flex items-center gap-xs opacity-30">
+<div class="h-[1px] flex-grow bg-env-accent"></div>
+<span class="material-symbols-outlined text-env-accent text-xs">alternate_email</span>
+<div class="h-[1px] flex-grow bg-env-accent"></div>
+</div>
+<div class="border-l-2 border-env-accent/30 pl-md">
+<p class="font-label-tech text-env-accent/60 text-[9px] uppercase tracking-widest mb-xs">Destination Point // Recipient</p>
+<div class="min-h-[20px]">
+<p class="font-body-md font-bold text-env-accent uppercase tracking-tight" id="env-name">UNDEFINED_IDENTITY</p>
+</div>
+<div class="min-h-[16px]">
+<p class="font-label-tech text-white text-[12px] uppercase opacity-70" id="env-email">ENDPOINT_NOT_SECURED</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 opacity-20">
+<svg fill="none" height="40" viewbox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg">
+<rect height="39" stroke="#8DC313" stroke-dasharray="2 2" width="39" x="0.5" y="0.5"></rect>
+<path d="M10 20L30 20M20 10L20 30" stroke="#8DC313"></path>
+</svg>
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">mail</span>
+</div>
+<div>
+<p class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Email Uplink</p>
+<p class="font-body-md font-bold">ops@aurodrive.ai</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">call</span>
+</div>
+<div>
+<p class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Secure Line</p>
+<p class="font-body-md font-bold">+1 (800) AURO-SYS</p>
+</div>
+</div>
+</div>
+</div>
+<form class="space-y-md relative z-10 bg-surface-container-low/30 p-md rounded-xl border border-outline-variant/20" id="inquiryForm">
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-tech text-label-tech uppercase text-[10px] text-outline font-bold">Protocol / Name</label>
+<input autocomplete="name" class="bg-white border border-outline-variant px-md py-sm rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary focus:outline-none transition-all placeholder:opacity-30" id="input-name" placeholder="IDENTITY" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-tech text-label-tech uppercase text-[10px] text-outline font-bold">Frequency / Email</label>
+<input autocomplete="email" class="bg-white border border-outline-variant px-md py-sm rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary focus:outline-none transition-all placeholder:opacity-30" id="input-email" placeholder="ENDPOINT" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-tech text-label-tech uppercase text-[10px] text-outline font-bold">Inquiry Vector</label>
+<select class="bg-white border border-outline-variant px-md py-sm rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary focus:outline-none transition-all appearance-none cursor-pointer">
+<option>PARTNERSHIP_PROPOSAL</option>
+<option>TECHNICAL_SUPPORT</option>
+<option>MEDIA_ENQUIRY</option>
+<option>FLEET_EXPANSION</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-tech text-label-tech uppercase text-[10px] text-outline font-bold">Data Payload / Message</label>
+<textarea class="bg-white border border-outline-variant px-md py-sm rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary focus:outline-none transition-all placeholder:opacity-30 resize-none" placeholder="TRANSMIT MESSAGE CONTENT..." required="" rows="4"></textarea>
+</div>
+<div class="flex items-center gap-sm mt-md">
+<input class="w-4 h-4 rounded border-outline-variant text-secondary focus:ring-secondary" id="terms" required="" type="checkbox"/>
+<label class="font-label-tech text-[10px] uppercase text-outline" for="terms">I authorize the transmission of this data via secure nodes.</label>
+</div>
+<button class="w-full bg-primary text-on-primary p-md rounded-lg font-label-tech uppercase tracking-widest text-label-tech flex items-center justify-center gap-md group hover:bg-secondary transition-all active:scale-[0.98] shadow-lg" type="submit">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform text-secondary">bolt</span>
+              Transmit Data
+            </button>
+</form>
+</div>
+</section>
+</div>
+</main>
+<footer class="relative w-full overflow-hidden px-margin py-xl flex flex-col md:flex-row justify-between items-end bg-primary shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
+<div class="flex flex-col gap-md">
+<img alt="HAVONE MOBILITY Logo" class="h-12 w-auto mb-xs brightness-0 invert" src="https://lh3.googleusercontent.com/aida/ADBb0ujze909AdRxgdrW9AEP2W57dnJ0NJSOVd8vJuxkDSizyxBROjJHCRPS_tD2HMRaTriF6bettEvoLQAv5WrhPh5nNDTTUTh-Xl5i8yDQH9QlV8QWArMM6dkusQYb1gSjjupo_5Eby__hz1212-bG9rnrg23Q1ep7iCODY5_cHcZEwjxej26VjyZx51EpdRkmMJbimd17vLGso2NyZODhsH4vQCYasuIWJtUcTJJzCzYcSJvsdJzrCgeJewu_QV6lmkW9xSQ7ERY9Yw"/>
+<p class="font-label-tech text-label-tech text-on-primary/60 tracking-widest">© 2024 AURODRIVE. ALL SYSTEMS AUTONOMOUS.</p>
+</div>
+<nav class="flex flex-wrap gap-lg mt-xl md:mt-0">
+<a class="font-label-tech text-label-tech text-on-primary/60 hover:text-secondary transition-all duration-300" href="#">Privacy Policy</a>
+<a class="font-label-tech text-label-tech text-on-primary/60 hover:text-secondary transition-all duration-300" href="#">Safety Report</a>
+<a class="font-label-tech text-label-tech text-on-primary/60 hover:text-secondary transition-all duration-300" href="#">Ethics</a>
+<a class="font-label-tech text-label-tech text-on-primary/60 hover:text-secondary transition-all duration-300" href="#">Terms</a>
+</nav>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-secondary animate-pulse"></div>
+</footer>
+<script>
+    // Digital Envelope Real-time Updates
+    const nameInput = document.getElementById('input-name');
+    const emailInput = document.getElementById('input-email');
+    const envName = document.getElementById('env-name');
+    const envEmail = document.getElementById('env-email');
+
+    nameInput.addEventListener('input', (e) => {
+        envName.textContent = e.target.value.trim() !== '' ? e.target.value.toUpperCase() : 'UNDEFINED_IDENTITY';
+    });
+
+    emailInput.addEventListener('input', (e) => {
+        envEmail.textContent = e.target.value.trim() !== '' ? e.target.value : 'ENDPOINT_NOT_SECURED';
+    });
+
+    // Form Submission Success State
+    const inquiryForm = document.getElementById('inquiryForm');
+    const successModal = document.getElementById('successModal');
+
+    inquiryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Trigger success overlay
+        successModal.classList.remove('hidden');
+        successModal.classList.add('flex');
+        
+        // Reset form (optional)
+        inquiryForm.reset();
+        envName.textContent = 'UNDEFINED_IDENTITY';
+        envEmail.textContent = 'ENDPOINT_NOT_SECURED';
+    });
+  </script>
+</body></html>
