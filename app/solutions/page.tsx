@@ -46,75 +46,167 @@ export default function SolutionsPage() {
       <Speedometer />
       <Header />
       <main className="pt-[100px]">
-        {/* Hero Section — Full viewport with background image */}
+        {/* Hero Section — Split Interactive Design */}
         <section
           ref={heroRef}
-          className="relative w-full h-[calc(100dvh-100px)] flex items-center overflow-hidden"
+          className="relative w-full h-[calc(100dvh-100px)] flex items-stretch overflow-hidden"
         >
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/images/solutions-hero.png"
-              alt="Fleet operations control room"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/60 to-slate-950/30" />
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/60" />
+          {/* Mobile animated wave background */}
+          <div className="absolute inset-0 lg:hidden z-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
+            {/* Animated flowing wave orbs for mobile */}
+            <motion.div
+              className="absolute inset-0 opacity-50"
+            >
+              {/* Large flowing wave orb 1 */}
+              <motion.div
+                className="absolute top-[-15%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-br from-secondary/20 to-secondary/5 rounded-full blur-[100px]"
+                animate={{
+                  y: [0, 80, 0],
+                  x: [0, 40, 0],
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Wave orb 2 */}
+              <motion.div
+                className="absolute top-[30%] right-[-15%] w-[450px] h-[450px] bg-gradient-to-bl from-secondary/15 to-transparent rounded-full blur-[80px]"
+                animate={{
+                  y: [0, -70, 0],
+                  x: [0, -50, 0],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+              {/* Wave orb 3 - bottom */}
+              <motion.div
+                className="absolute bottom-[-5%] left-[15%] w-[380px] h-[380px] bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-[80px]"
+                animate={{
+                  y: [0, -50, 0],
+                  x: [0, 50, 0],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              />
+              {/* Wave orb 4 - accent */}
+              <motion.div
+                className="absolute top-[50%] left-[5%] w-[280px] h-[280px] bg-gradient-to-br from-secondary/8 to-transparent rounded-full blur-[60px]"
+                animate={{
+                  y: [0, 35, 0],
+                  x: [0, -45, 0],
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+              />
+            </motion.div>
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 w-full px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24">
-            <motion.div
-              className="max-w-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            >
-              <motion.span
-                className="font-label-tech text-label-tech text-secondary tracking-[0.2em] uppercase mb-4 block"
-                initial={{ opacity: 0, x: -20 }}
-                animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+          {/* Left Side — Clean dark content */}
+          <div className="w-full lg:w-1/2 bg-zinc-950 flex items-center justify-center relative overflow-hidden z-10">
+
+            <div className="relative z-10 px-6 sm:px-10 md:px-12 py-12 md:py-16 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+                transition={{ duration: 0.6 }}
+                className="flex items-center justify-center lg:justify-start gap-2 mb-4 md:mb-6"
               >
-                For Fleet Operators
-              </motion.span>
+                <div className="w-8 h-px bg-secondary" />
+                <span className="font-label-tech text-secondary uppercase text-xs md:text-sm tracking-widest">Solutions</span>
+              </motion.div>
+
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-tight mb-5"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.2] mb-4 md:mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ delay: 0.1, duration: 0.7 }}
+              >
+                Control Your Fleet
+                <br />
+                <span className="text-secondary">With Intelligence</span>
+              </motion.h1>
+
+              <motion.p
+                className="text-base md:text-lg text-slate-300 leading-[1.7] mb-8 md:mb-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
               >
-                Your Fleet. Fully Visible.<br />
-                <span className="text-secondary">Fully Controlled.</span>
-              </motion.h1>
-              <motion.p
-                className="text-base md:text-lg text-slate-200 leading-relaxed max-w-xl mb-8"
-                initial={{ opacity: 0 }}
-                animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
-              >
-                HAVONE gives fleet operators complete situational awareness — live video, real-time location, AI safety alerts, and actionable insights. One device, one subscription, total control.
+                Live visibility, real-time alerts, and actionable insights—all in one platform.
               </motion.p>
+
               <motion.div
-                className="flex flex-wrap gap-4"
-                initial={{ opacity: 0, y: 16 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
+                className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
               >
-                <a
+                <motion.a
                   href="/contact"
-                  className="px-7 py-3.5 bg-secondary text-white font-medium text-sm rounded-lg hover:bg-secondary/80 transition-colors shadow-lg shadow-secondary/30"
+                  className="px-7 py-3 bg-secondary text-primary font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-secondary/90 transition-all shadow-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Apply for Free Pilot
-                </a>
-                <a
+                  Start Free Pilot
+                </motion.a>
+                <motion.a
                   href="/contact"
-                  className="px-7 py-3.5 bg-white/10 backdrop-blur-sm text-white font-medium text-sm rounded-lg border border-white/30 hover:bg-white/20 transition-all"
+                  className="px-7 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold text-sm uppercase tracking-wider rounded-lg border border-white/30 hover:bg-white/20 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Talk to Our Team
-                </a>
+                  Get Demo
+                </motion.a>
               </motion.div>
+            </div>
+          </div>
+
+          {/* Right Side — Image with interactive feature cards - Desktop only */}
+          <div className="hidden lg:flex w-1/2 items-center justify-center relative overflow-hidden z-10">
+            <motion.div
+              className="absolute inset-0"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src="/images/solutions-hero.png"
+                alt="Fleet operations control room"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-slate-950/80 via-slate-950/40 to-transparent" />
             </motion.div>
+
+            {/* Feature Cards - Floating */}
+            <div className="absolute inset-0 flex flex-col justify-center items-end pr-12 gap-4 z-20">
+              {[
+                { icon: 'videocam', label: 'Live Video', desc: 'Real-time feeds' },
+                { icon: 'location_on', label: 'GPS Tracking', desc: 'Precise locations' },
+                { icon: 'shield', label: 'Safety AI', desc: 'Event detection' }
+              ].map((feature, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-4 py-3 flex items-center gap-3"
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+                  transition={{ delay: 0.4 + idx * 0.15, duration: 0.6 }}
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: 'rgba(141, 195, 19, 0.1)',
+                    borderColor: 'rgba(141, 195, 19, 0.3)'
+                  }}
+                >
+                  <div className="w-10 h-10 bg-secondary/30 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="material-symbols-outlined text-secondary text-[18px]">
+                      {feature.icon}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm">{feature.label}</div>
+                    <div className="text-slate-400 text-xs">{feature.desc}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

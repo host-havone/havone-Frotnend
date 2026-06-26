@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Speedometer from "@/components/Speedometer";
@@ -46,95 +47,153 @@ export default function TechnologyPage() {
       <Speedometer />
       <Header />
       <main className="pt-xl">
-        {/* Hero Section: Vision Suite */}
-        <section ref={heroRef} className="px-margin py-xl max-w-[1440px] mx-auto border-b border-outline-variant/10">
-          <div className="grid grid-cols-12 gap-gutter items-center py-lg">
-            <motion.div
-              className="col-span-12 md:col-span-5"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              <motion.div
-                className="flex items-center gap-xs mb-md"
-                initial={{ opacity: 0 }}
-                animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  visibility
-                </span>
-                <span className="font-label-tech text-label-tech text-secondary uppercase">The Vision Suite</span>
-              </motion.div>
-              <motion.h1
-                className="font-h1 text-h1 text-primary mb-md"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.3, duration: 0.7 }}
-              >
-                Machine Intelligence with Human Clarity.
-              </motion.h1>
-              <motion.p
-                className="font-body-lg text-body-lg text-on-surface-variant mb-lg"
-                initial={{ opacity: 0 }}
-                animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                HAVONE MOBILITY&apos;s neural architecture processes 1.2 Petabytes of sensor data every second, creating a 360-degree fail-safe perception field that outpaces human reaction time by 400%.
-              </motion.p>
-              <motion.div
-                className="flex gap-md"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.7 }}
-              >
-                <motion.div
-                  className="bg-surface-container border border-outline-variant/30 p-md rounded-lg flex-1"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                >
-                  <span className="font-label-tech text-label-tech text-primary block mb-xs">LIDAR PRECISION</span>
-                  <span className="font-h3 text-h3 text-primary">0.03mm</span>
-                </motion.div>
-                <motion.div
-                  className="bg-surface-container border border-outline-variant/30 p-md rounded-lg flex-1"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                >
-                  <span className="font-label-tech text-label-tech text-primary block mb-xs">SENSOR LATENCY</span>
-                  <span className="font-h3 text-h3 text-primary">&lt;2ms</span>
-                </motion.div>
-              </motion.div>
-            </motion.div>
+        {/* Hero Section: Centered Interactive */}
+        <section ref={heroRef} className="h-[100dvh] w-full flex items-center justify-center relative overflow-hidden border-b border-outline-variant/10">
+          {/* Background with gradient overlay */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary via-primary to-primary/95" />
 
+          {/* Background image with parallax effect */}
+          <motion.div
+            className="absolute inset-0 z-0 opacity-30"
+            initial={{ opacity: 0 }}
+            animate={isHeroInView ? { opacity: 0.3 } : { opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Image
+              src="/images/tech-hero-device.png"
+              alt="AI-powered fleet network visualization"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+
+          {/* Centered content - Interactive structure */}
+          <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-margin py-xl text-center">
             <motion.div
-              className="col-span-12 md:col-span-7 relative"
-              initial={{ opacity: 0, x: 20 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
+              className="space-y-4 md:space-y-6 max-w-3xl"
+              initial={{ opacity: 0, y: -40 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="aspect-video bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/20 shadow-xl relative">
+              {/* Eyebrow - Centered */}
+              <motion.div
+                className="flex items-center justify-center gap-2"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+              >
+                <div className="w-6 h-px bg-secondary" />
+                <span className="font-label-tech text-label-tech text-secondary uppercase text-xs md:text-sm tracking-widest">The Platform</span>
+                <div className="w-6 h-px bg-secondary" />
+              </motion.div>
+
+              {/* Main Headline - Bold and centered */}
+              <motion.h1
+                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.15] tracking-[-0.02em]"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ delay: 0.2, duration: 0.7 }}
+              >
+                See Everything.
+                <br />
+                <span className="text-secondary">
+                  Miss Nothing.
+                </span>
+              </motion.h1>
+
+              {/* Subheading - Minimal and refined */}
+              <motion.p
+                className="text-base md:text-lg text-slate-300 leading-[1.7] max-w-2xl mx-auto font-light"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                Edge AI meets cloud intelligence. Real-time vision from every angle.
+              </motion.p>
+
+              {/* Three Key Features - Minimal centered layout */}
+              <motion.div
+                className="grid grid-cols-3 gap-4 md:gap-6 pt-6 md:pt-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
                 <motion.div
-                  className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20"
-                  animate={{
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.div
-                  className="absolute top-md right-md bg-white/70 backdrop-blur-md px-md py-sm rounded-full flex items-center gap-sm border border-outline-variant/30"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 }}
+                  className="flex flex-col items-center gap-2"
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <motion.span
-                    className="w-2 h-2 rounded-full bg-secondary-fixed"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  />
-                  <span className="font-label-tech text-label-tech text-primary">LIDAR: ACTIVE</span>
+                  <motion.div
+                    className="w-12 h-12 md:w-14 md:h-14 bg-secondary/20 rounded-full flex items-center justify-center"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(141, 195, 19, 0.3)" }}
+                  >
+                    <span className="material-symbols-outlined text-secondary text-[24px] md:text-[28px]">memory</span>
+                  </motion.div>
+                  <span className="font-label-tech text-secondary uppercase text-[10px] md:text-xs tracking-wider">40 TOPS</span>
+                  <span className="text-slate-400 text-[10px] md:text-xs">Edge AI</span>
                 </motion.div>
-              </div>
+
+                <motion.div
+                  className="flex flex-col items-center gap-2"
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="w-12 h-12 md:w-14 md:h-14 bg-secondary/20 rounded-full flex items-center justify-center"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(141, 195, 19, 0.3)" }}
+                  >
+                    <span className="material-symbols-outlined text-secondary text-[24px] md:text-[28px]">timer</span>
+                  </motion.div>
+                  <span className="font-label-tech text-secondary uppercase text-[10px] md:text-xs tracking-wider">&lt;100ms</span>
+                  <span className="text-slate-400 text-[10px] md:text-xs">Latency</span>
+                </motion.div>
+
+                <motion.div
+                  className="flex flex-col items-center gap-2"
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="w-12 h-12 md:w-14 md:h-14 bg-secondary/20 rounded-full flex items-center justify-center"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(141, 195, 19, 0.3)" }}
+                  >
+                    <span className="material-symbols-outlined text-secondary text-[24px] md:text-[28px]">cloud_sync</span>
+                  </motion.div>
+                  <span className="font-label-tech text-secondary uppercase text-[10px] md:text-xs tracking-wider">24/7</span>
+                  <span className="text-slate-400 text-[10px] md:text-xs">Cloud Sync</span>
+                </motion.div>
+              </motion.div>
+
+              {/* CTA Button - Centered */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="pt-2 md:pt-4"
+              >
+                <motion.button
+                  className="px-6 md:px-10 py-2.5 md:py-3 bg-secondary text-primary font-semibold text-xs md:text-sm uppercase tracking-widest rounded-lg hover:bg-secondary/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Explore Platform
+                </motion.button>
+              </motion.div>
             </motion.div>
           </div>
+
+          {/* Scroll indicator at bottom */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-secondary text-xs uppercase tracking-widest font-label-tech">Scroll</span>
+              <span className="material-symbols-outlined text-secondary text-[20px]">expand_more</span>
+            </div>
+          </motion.div>
         </section>
 
         {/* Version Evolution Section */}
