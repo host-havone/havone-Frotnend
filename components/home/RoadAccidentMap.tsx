@@ -4,128 +4,22 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-// State data with road accident statistics (sample data - replace with real data)
 const stateData = [
-  {
-    name: "Uttar Pradesh",
-    accidents: 42867,
-    deaths: 18614,
-    severity: "critical", // critical, high, medium, low
-    color: "#DC2626", // red-600
-    path: "M 420 180 L 440 175 L 460 180 L 475 190 L 480 210 L 470 230 L 450 240 L 430 235 L 415 220 L 410 200 Z"
-  },
-  {
-    name: "Tamil Nadu",
-    accidents: 64131,
-    deaths: 13568,
-    severity: "critical",
-    color: "#DC2626",
-    path: "M 340 430 L 360 420 L 380 430 L 390 450 L 385 470 L 365 480 L 345 475 L 335 455 Z"
-  },
-  {
-    name: "Maharashtra",
-    accidents: 40675,
-    deaths: 11883,
-    severity: "critical",
-    color: "#DC2626",
-    path: "M 280 300 L 310 290 L 340 300 L 350 320 L 340 345 L 310 355 L 285 345 L 275 320 Z"
-  },
-  {
-    name: "Karnataka",
-    accidents: 41939,
-    deaths: 11361,
-    severity: "critical",
-    color: "#DC2626",
-    path: "M 300 360 L 330 355 L 350 370 L 355 395 L 340 415 L 310 420 L 295 405 L 290 380 Z"
-  },
-  {
-    name: "Madhya Pradesh",
-    accidents: 51372,
-    deaths: 11031,
-    severity: "critical",
-    color: "#DC2626",
-    path: "M 330 220 L 365 210 L 395 220 L 405 245 L 390 270 L 360 280 L 330 270 L 320 245 Z"
-  },
-  {
-    name: "Rajasthan",
-    accidents: 25905,
-    deaths: 9761,
-    severity: "high",
-    color: "#EA580C", // orange-600
-    path: "M 250 150 L 290 140 L 325 150 L 340 180 L 330 210 L 300 220 L 260 210 L 245 180 Z"
-  },
-  {
-    name: "West Bengal",
-    accidents: 12402,
-    deaths: 7026,
-    severity: "high",
-    color: "#EA580C",
-    path: "M 520 240 L 545 235 L 560 250 L 555 275 L 535 285 L 515 275 L 510 255 Z"
-  },
-  {
-    name: "Andhra Pradesh",
-    accidents: 24256,
-    deaths: 6914,
-    severity: "high",
-    color: "#EA580C",
-    path: "M 360 360 L 390 355 L 410 370 L 415 395 L 400 415 L 375 420 L 360 405 L 355 380 Z"
-  },
-  {
-    name: "Gujarat",
-    accidents: 19256,
-    deaths: 6897,
-    severity: "high",
-    color: "#EA580C",
-    path: "M 180 210 L 220 200 L 250 215 L 255 245 L 235 265 L 200 270 L 175 250 L 170 230 Z"
-  },
-  {
-    name: "Bihar",
-    accidents: 11037,
-    deaths: 5183,
-    severity: "medium",
-    color: "#F59E0B", // amber-500
-    path: "M 480 215 L 510 210 L 530 225 L 525 245 L 505 255 L 480 250 L 475 230 Z"
-  },
-  {
-    name: "Telangana",
-    accidents: 18671,
-    deaths: 4891,
-    severity: "medium",
-    color: "#F59E0B",
-    path: "M 360 320 L 385 315 L 405 330 L 410 350 L 395 365 L 370 370 L 355 355 L 350 335 Z"
-  },
-  {
-    name: "Punjab",
-    accidents: 5895,
-    deaths: 3252,
-    severity: "medium",
-    color: "#F59E0B",
-    path: "M 285 100 L 310 95 L 330 105 L 335 125 L 320 140 L 295 145 L 280 130 L 275 115 Z"
-  },
-  {
-    name: "Haryana",
-    accidents: 9664,
-    deaths: 3509,
-    severity: "medium",
-    color: "#F59E0B",
-    path: "M 310 120 L 335 115 L 355 125 L 360 145 L 345 160 L 320 165 L 305 150 L 300 135 Z"
-  },
-  {
-    name: "Odisha",
-    accidents: 11322,
-    deaths: 4440,
-    severity: "medium",
-    color: "#F59E0B",
-    path: "M 460 300 L 485 295 L 505 310 L 510 335 L 495 350 L 470 355 L 455 340 L 450 320 Z"
-  },
-  {
-    name: "Kerala",
-    accidents: 42276,
-    deaths: 3516,
-    severity: "low",
-    color: "#10B981", // green-500
-    path: "M 310 440 L 330 435 L 345 450 L 348 475 L 335 490 L 315 495 L 305 480 L 300 460 Z"
-  }
+  { name: "Uttar Pradesh", accidents: 42867, deaths: 18614, severity: "critical", color: "#DC2626" },
+  { name: "Tamil Nadu", accidents: 64131, deaths: 13568, severity: "critical", color: "#DC2626" },
+  { name: "Maharashtra", accidents: 40675, deaths: 11883, severity: "critical", color: "#DC2626" },
+  { name: "Karnataka", accidents: 41939, deaths: 11361, severity: "critical", color: "#DC2626" },
+  { name: "Madhya Pradesh", accidents: 51372, deaths: 11031, severity: "critical", color: "#DC2626" },
+  { name: "Rajasthan", accidents: 25905, deaths: 9761, severity: "high", color: "#EA580C" },
+  { name: "West Bengal", accidents: 12402, deaths: 7026, severity: "high", color: "#EA580C" },
+  { name: "Andhra Pradesh", accidents: 24256, deaths: 6914, severity: "high", color: "#EA580C" },
+  { name: "Gujarat", accidents: 19256, deaths: 6897, severity: "high", color: "#EA580C" },
+  { name: "Bihar", accidents: 11037, deaths: 5183, severity: "medium", color: "#F59E0B" },
+  { name: "Telangana", accidents: 18671, deaths: 4891, severity: "medium", color: "#F59E0B" },
+  { name: "Punjab", accidents: 5895, deaths: 3252, severity: "medium", color: "#F59E0B" },
+  { name: "Haryana", accidents: 9664, deaths: 3509, severity: "medium", color: "#F59E0B" },
+  { name: "Odisha", accidents: 11322, deaths: 4440, severity: "medium", color: "#F59E0B" },
+  { name: "Kerala", accidents: 42276, deaths: 3516, severity: "low", color: "#10B981" },
 ];
 
 export default function RoadAccidentMap() {
@@ -137,11 +31,9 @@ export default function RoadAccidentMap() {
 
   useEffect(() => {
     if (!isVisible || isPaused) return;
-
     const interval = setInterval(() => {
       setActiveStateIndex((prev) => (prev + 1) % stateData.length);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [isVisible, isPaused]);
 
@@ -150,121 +42,91 @@ export default function RoadAccidentMap() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-xl bg-gradient-to-b from-surface to-surface-container-low overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden bg-primary"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `repeating-linear-gradient(0deg, #8DC313 0px, #8DC313 1px, transparent 1px, transparent 40px),
-                             repeating-linear-gradient(90deg, #8DC313 0px, #8DC313 1px, transparent 1px, transparent 40px)`,
-          }}
+      {/* Full-width background map image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/home-accident-map.png"
+          alt="India data visualization map showing accident hotspots and fleet routes"
+          fill
+          className="object-cover object-center opacity-40"
+          priority={false}
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950/80" />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-margin relative z-10">
-        {/* Section Header */}
-        <motion.div
-          className="mb-xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.span
-            className="font-label-tech text-label-tech text-secondary tracking-[0.2em] uppercase block mb-xs"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            The Real Problem
-          </motion.span>
-          <motion.h2
-            className="font-h1 text-h1 uppercase text-primary"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.3 }}
-          >
-            Road Safety Crisis in India
-          </motion.h2>
-          <motion.p
-            className="text-body-lg text-on-surface-variant mt-md max-w-3xl"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            Every year, thousands of lives are lost on Indian roads. Our autonomous technology aims to
-            dramatically reduce these numbers by eliminating human error.
-          </motion.p>
-        </motion.div>
+      {/* Content */}
+      <div className="relative z-10 w-full px-6 sm:px-10 md:px-16 lg:px-20 py-20 md:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-[1440px] mx-auto">
 
-        {/* Map and Data Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr,0.7fr] gap-lg items-start">
-          {/* Indian Map */}
+          {/* Left: Text Content */}
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="bg-white border border-outline-variant/20 rounded-xl p-sm shadow-lg relative overflow-hidden">
-              <Image
-                src="/images/india-map.svg"
-                alt="India Map with Road Accident Statistics"
-                width={700}
-                height={800}
-                className="w-full h-auto"
-                style={{ filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.05))" }}
-                priority={false}
-              />
+            <motion.span
+              className="font-label-tech text-label-tech text-secondary tracking-[0.2em] uppercase block mb-4"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              The Problem We&apos;re Solving
+            </motion.span>
 
-              {/* Overlay Legend */}
-              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg p-sm border border-outline-variant/20 shadow-md">
-                <p className="font-label-tech text-[9px] uppercase text-outline mb-xs font-bold">
-                  Severity Level
-                </p>
-                <div className="space-y-xs">
-                  {[
-                    { label: "Critical", color: "#DC2626" },
-                    { label: "High", color: "#EA580C" },
-                    { label: "Medium", color: "#F59E0B" },
-                    { label: "Low", color: "#10B981" },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-center gap-xs">
-                      <div
-                        className="w-3 h-3 rounded-sm"
-                        style={{ backgroundColor: item.color }}
-                      />
-                      <span className="font-label-tech text-[8px] text-outline">
-                        {item.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.3 }}
+            >
+              1.7 Lakh Lives Lost<br />
+              <span className="text-secondary">Every Year</span>
+            </motion.h2>
+
+            <motion.p
+              className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl mb-8"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              Over 90% of road accidents in India are caused by human error. Every kilometer driven with HAVONE captures critical safety data — near-misses, harsh braking, blind-spot incidents, and road conditions. This data powers real-time alerts today and trains autonomous AI tomorrow.
+            </motion.p>
+
+            {/* Key Stats */}
+            <motion.div
+              className="grid grid-cols-3 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="border border-white/10 rounded-lg p-4 bg-white/5 backdrop-blur-sm">
+                <span className="text-2xl md:text-3xl font-bold text-secondary block">90%</span>
+                <span className="text-[11px] text-slate-400 uppercase tracking-wide">Human Error</span>
               </div>
-            </div>
-
-            {/* Map Info */}
-            <div className="mt-sm flex items-center justify-center gap-xs">
-              <span className="material-symbols-outlined text-secondary text-[16px]">
-                location_on
-              </span>
-              <span className="font-label-tech text-[10px] uppercase text-outline">
-                {stateData.length} Major States Tracked
-              </span>
-            </div>
+              <div className="border border-white/10 rounded-lg p-4 bg-white/5 backdrop-blur-sm">
+                <span className="text-2xl md:text-3xl font-bold text-white block">1.7L</span>
+                <span className="text-[11px] text-slate-400 uppercase tracking-wide">Annual Deaths</span>
+              </div>
+              <div className="border border-white/10 rounded-lg p-4 bg-white/5 backdrop-blur-sm">
+                <span className="text-2xl md:text-3xl font-bold text-white block">15</span>
+                <span className="text-[11px] text-slate-400 uppercase tracking-wide">States Tracked</span>
+              </div>
+            </motion.div>
           </motion.div>
 
-          {/* State Data Panel - Compact */}
+          {/* Right: Live State Data Panel */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
             <motion.div
               key={activeStateIndex}
-              className="bg-primary text-on-primary rounded-xl p-md border-2 border-secondary shadow-xl relative overflow-hidden"
+              className="bg-white/[0.08] backdrop-blur-lg text-white rounded-2xl p-8 md:p-10 border border-white/20 shadow-2xl relative overflow-hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -272,122 +134,99 @@ export default function RoadAccidentMap() {
               aria-live="polite"
               aria-atomic="true"
             >
-              {/* Background Pattern */}
-              <div
-                className="absolute inset-0 opacity-5"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(141, 195, 19, 0.1) 1px, transparent 1px),
-                                   linear-gradient(90deg, rgba(141, 195, 19, 0.1) 1px, transparent 1px)`,
-                  backgroundSize: "20px 20px",
-                }}
-              />
+              {/* Background accent */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/10 rounded-full blur-[80px] pointer-events-none" />
 
               <div className="relative z-10">
-                {/* State Name - Compact */}
-                <motion.div
-                  className="mb-md pb-sm border-b border-secondary/30"
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <span className="font-label-tech text-[8px] text-secondary/70 uppercase tracking-widest block mb-1">
+                {/* State Name */}
+                <div className="mb-8 pb-4 border-b border-white/10">
+                  <span className="text-[11px] text-secondary uppercase tracking-widest block mb-2">
                     Current State
                   </span>
-                  <h3 className="font-h3 text-h3 uppercase text-white leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">
                     {activeState.name}
                   </h3>
-                </motion.div>
+                </div>
 
-                {/* Statistics - Compact */}
-                <div className="space-y-md">
-                  {/* Total Accidents */}
+                {/* Statistics */}
+                <div className="space-y-6">
                   <motion.div
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <span className="font-label-tech text-[8px] text-secondary/70 uppercase tracking-wide block mb-1">
+                    <span className="text-[11px] text-slate-400 uppercase tracking-wide block mb-1">
                       Annual Accidents
                     </span>
-                    <div className="flex items-baseline gap-xs">
-                      <motion.span
-                        className="font-h2 text-[36px] font-black leading-none text-secondary"
-                        initial={{ scale: 0.8 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
-                      >
-                        {activeState.accidents.toLocaleString()}
-                      </motion.span>
-                    </div>
+                    <motion.span
+                      className="text-4xl md:text-5xl font-black text-secondary leading-none"
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
+                    >
+                      {activeState.accidents.toLocaleString()}
+                    </motion.span>
                   </motion.div>
 
-                  {/* Deaths */}
                   <motion.div
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <span className="font-label-tech text-[8px] text-secondary/70 uppercase tracking-wide block mb-1">
+                    <span className="text-[11px] text-slate-400 uppercase tracking-wide block mb-1">
                       Fatalities
                     </span>
-                    <div className="flex items-baseline gap-xs">
+                    <div className="flex items-baseline gap-3">
                       <motion.span
-                        className="font-h2 text-[32px] font-black leading-none text-white"
+                        className="text-3xl md:text-4xl font-black text-white leading-none"
                         initial={{ scale: 0.8 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 200, delay: 0.5 }}
                       >
                         {activeState.deaths.toLocaleString()}
                       </motion.span>
-                      <span className="font-label-tech text-[9px] text-white/60 uppercase">
-                        Lives Lost
+                      <span className="text-sm text-slate-500 uppercase">
+                        lives lost
                       </span>
                     </div>
                   </motion.div>
 
-                  {/* Severity Indicator - Compact */}
+                  {/* Severity */}
                   <motion.div
-                    className="flex items-center justify-between bg-white/5 rounded-lg p-sm border border-secondary/20"
+                    className="flex items-center justify-between bg-white/5 rounded-xl p-4 border border-white/10"
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.6 }}
                   >
-                    <span className="font-label-tech text-[9px] text-secondary uppercase">
-                      Severity
-                    </span>
-                    <div className="flex items-center gap-xs">
+                    <span className="text-sm text-slate-300">Severity</span>
+                    <div className="flex items-center gap-2">
                       <div
                         className="w-3 h-3 rounded-full"
                         style={{ backgroundColor: activeState.color }}
                       />
-                      <span className="font-label-tech text-[9px] text-white uppercase font-bold">
+                      <span className="text-sm text-white font-semibold capitalize">
                         {activeState.severity}
                       </span>
                     </div>
                   </motion.div>
                 </div>
 
-                {/* Auto-cycling indicator - Compact */}
-                <motion.div
-                  className="mt-md pt-sm border-t border-secondary/20 flex items-center gap-xs justify-center"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                >
+                {/* Auto-cycling indicator */}
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 justify-center">
                   <motion.div
-                    className="w-1.5 h-1.5 rounded-full bg-secondary"
+                    className="w-2 h-2 rounded-full bg-secondary"
                     animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   />
-                  <span className="font-label-tech text-[7px] text-secondary/60 uppercase tracking-widest">
+                  <span className="text-[11px] text-slate-500 uppercase tracking-widest">
                     Auto-cycling • 3s
                   </span>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Navigation Dots - Compact */}
-            <div className="flex items-center justify-center gap-1 mt-sm" role="tablist" aria-label="State statistics navigation">
+            {/* Navigation Dots */}
+            <div className="flex items-center justify-center gap-1.5 mt-5" role="tablist" aria-label="State statistics navigation">
               {stateData.map((state, index) => (
                 <button
                   key={index}
@@ -398,15 +237,34 @@ export default function RoadAccidentMap() {
                     setActiveStateIndex(index);
                     setIsPaused(true);
                   }}
-                  className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary ${
+                  className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary ${
                     activeStateIndex === index
-                      ? "bg-secondary w-6"
-                      : "bg-outline-variant w-1.5 hover:bg-secondary/50"
+                      ? "bg-secondary w-7"
+                      : "bg-white/20 w-2 hover:bg-secondary/50"
                   }`}
                 />
               ))}
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Legend overlay - bottom left */}
+      <div className="absolute bottom-6 left-6 sm:left-10 md:left-16 lg:left-20 z-10">
+        <div className="bg-slate-900/80 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10">
+          <div className="flex items-center gap-4">
+            {[
+              { label: "Critical", color: "#DC2626" },
+              { label: "High", color: "#EA580C" },
+              { label: "Medium", color: "#F59E0B" },
+              { label: "Low", color: "#10B981" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.color }} />
+                <span className="text-[10px] text-slate-400 uppercase">{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

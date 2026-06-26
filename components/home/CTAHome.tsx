@@ -25,22 +25,14 @@ export default function CTAHome() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/20 rounded-full mb-6">
-              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              <span className="font-label-tech text-label-tech uppercase tracking-widest text-primary">
-                Ready to Deploy
-              </span>
-            </div>
-
             <h2 className="font-h1 text-5xl md:text-6xl text-primary mb-6">
-              Transform Your Fleet with
+              Ready to See Your Fleet
               <br />
-              <span className="text-secondary">Autonomous Intelligence</span>
+              <span className="text-secondary">Like Never Before?</span>
             </h2>
 
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
-              Schedule a demonstration with our engineering team and discover how HAVONE MOBILITY
-              can revolutionize your operations with proven autonomous technology.
+              Be among the first fleet operators in India to deploy HAVONE. Limited early-access slots available — no upfront hardware cost.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -50,17 +42,17 @@ export default function CTAHome() {
                   whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(141, 195, 19, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Schedule a Demo
+                  Apply for Early Access
                 </motion.button>
               </Link>
 
-              <Link href="/solutions">
+              <Link href="/contact">
                 <motion.button
                   className="border-2 border-primary text-primary px-12 py-4 font-label-tech text-label-tech uppercase tracking-widest hover:bg-primary hover:text-white transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  View Solutions
+                  Talk to Our Team
                 </motion.button>
               </Link>
             </div>
@@ -73,8 +65,8 @@ export default function CTAHome() {
               transition={{ delay: 0.4 }}
             >
               {[
-                { icon: "verified_user", label: "ISO 26262 Certified" },
-                { icon: "language", label: "15+ Countries" },
+                { icon: "verified_user", label: "Data Security Certified" },
+                { icon: "flag", label: "Made in India" },
                 { icon: "support_agent", label: "24/7 Support" }
               ].map((item, i) => (
                 <motion.div

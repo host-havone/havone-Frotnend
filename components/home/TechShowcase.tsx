@@ -2,50 +2,51 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const techCategories = [
-  { id: "perception", label: "Perception", icon: "visibility" },
-  { id: "processing", label: "Processing", icon: "memory" },
+  { id: "sensors", label: "Sensors", icon: "sensors" },
+  { id: "edgeai", label: "Edge AI", icon: "memory" },
   { id: "connectivity", label: "Connectivity", icon: "cell_tower" },
-  { id: "safety", label: "Safety", icon: "shield" },
+  { id: "datacollection", label: "Data Collection", icon: "database" },
 ];
 
 const techContent = {
-  perception: {
-    title: "360° Environmental Awareness",
-    description: "Multi-sensor fusion combining LIDAR, radar, and cameras for complete situational understanding in all conditions",
+  sensors: {
+    title: "Multi-Sensor Intelligence",
+    description: "Our device combines cameras, GPS, accelerometer, gyroscope, and OBD-II to build a complete digital twin of every journey.",
     specs: [
-      { label: "LIDAR Range", value: "300m", icon: "radar" },
-      { label: "Camera Resolution", value: "12x Ultra-HD", icon: "photo_camera" },
-      { label: "Update Rate", value: "60Hz", icon: "speed" },
+      { label: "Camera", value: "1080p", icon: "photo_camera" },
+      { label: "GPS Accuracy", value: "2m", icon: "gps_fixed" },
+      { label: "Refresh Rate", value: "30 FPS", icon: "speed" },
     ]
   },
-  processing: {
-    title: "Neural Core V3 Architecture",
-    description: "Custom silicon delivering 800 TOPS of AI processing power with liquid-cooled thermal management",
+  edgeai: {
+    title: "On-Device Processing",
+    description: "Edge AI processes video and sensor data locally — detecting events in real-time without depending on network. Critical for India's patchy connectivity.",
     specs: [
-      { label: "Processing Power", value: "800 TOPS", icon: "memory" },
-      { label: "Latency", value: "< 2ms", icon: "bolt" },
-      { label: "Energy Efficiency", value: "95%", icon: "battery_charging_full" },
+      { label: "Processing", value: "4 TOPS", icon: "memory" },
+      { label: "Latency", value: "< 100ms", icon: "bolt" },
+      { label: "Storage", value: "256GB", icon: "storage" },
     ]
   },
   connectivity: {
-    title: "5G Slicing & V2X Protocol",
-    description: "Ultra-low latency communication networks enabling vehicle-to-everything interaction",
+    title: "Always Connected",
+    description: "4G LTE with auto-fallback to 2G. Data syncs automatically when connection restores — works across highways, rural stretches, and dead zones.",
     specs: [
-      { label: "Network Latency", value: "< 15ms", icon: "network_ping" },
-      { label: "Bandwidth", value: "10 Gbps", icon: "speed" },
-      { label: "Range", value: "5km V2V", icon: "cell_tower" },
+      { label: "Primary", value: "4G LTE", icon: "signal_cellular_alt" },
+      { label: "Fallback", value: "2G/3G", icon: "network_cell" },
+      { label: "Sync", value: "Auto-resume", icon: "sync" },
     ]
   },
-  safety: {
-    title: "Redundant Safety Systems",
-    description: "Multi-layer fail-safe architecture with 360° collision avoidance and real-time monitoring",
+  datacollection: {
+    title: "Safety Data Harvesting",
+    description: "Every trip generates labeled data — road quality, traffic density, sign detection, pedestrian behavior, weather. This trains our autonomous driving AI.",
     specs: [
-      { label: "System Uptime", value: "99.9%", icon: "check_circle" },
-      { label: "Safe Miles", value: "150M+", icon: "route" },
-      { label: "Incidents", value: "Zero", icon: "shield" },
+      { label: "Data Rate", value: "30+ pts/sec", icon: "timeline" },
+      { label: "Storage", value: "Cloud + Edge", icon: "cloud_upload" },
+      { label: "Labels", value: "Auto-generated", icon: "label" },
     ]
   },
 };
@@ -53,7 +54,7 @@ const techContent = {
 export default function TechShowcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeTab, setActiveTab] = useState("perception");
+  const [activeTab, setActiveTab] = useState("sensors");
 
   return (
     <section ref={ref} className="py-20 px-8 bg-surface-container-low">
@@ -68,24 +69,42 @@ export default function TechShowcase() {
             Technology Deep Dive
           </span>
           <h2 className="font-h1 text-h1 text-primary mt-4">
-            ENGINEERING THE AUTONOMOUS FUTURE
+            Technology That Sees Everything
           </h2>
+        </motion.div>
+
+        {/* IoT Device Image */}
+        <motion.div
+          className="mb-12 flex justify-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border border-outline-variant/20">
+            <Image
+              src="/images/home-iot-device.png"
+              alt="HAVONE IoT device — close-up product shot with green LED ring"
+              width={1024}
+              height={1024}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </motion.div>
 
         {/* Categories and Content */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-5 md:gap-6 lg:gap-7 items-stretch"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ delay: 0.2 }}
         >
           {/* Left - Categories */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="flex flex-col gap-3">
             {techCategories.map((category, i) => (
               <motion.button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl font-label-tech text-label-tech uppercase tracking-widest transition-all border-2 ${
+                className={`w-full flex items-center gap-4 px-5 md:px-6 py-4 md:py-5 rounded-xl font-label-tech text-label-tech uppercase tracking-widest transition-all border-2 flex-1 ${
                   activeTab === category.id
                     ? "bg-primary text-white border-secondary shadow-lg"
                     : "bg-white text-on-surface border-outline-variant/30 hover:border-secondary/50"
@@ -94,13 +113,13 @@ export default function TechShowcase() {
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: 0.3 + i * 0.1 }}
+                transition={{ delay: 0.3 + i * 0.08 }}
               >
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                <div className={`w-11 h-11 md:w-12 md:h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
                   activeTab === category.id ? "bg-secondary" : "bg-secondary/10"
                 }`}>
                   <span
-                    className={`material-symbols-outlined text-2xl ${
+                    className={`material-symbols-outlined text-xl md:text-2xl ${
                       activeTab === category.id ? "text-primary" : "text-secondary"
                     }`}
                     style={{ fontVariationSettings: "'FILL' 1" }}
@@ -125,19 +144,19 @@ export default function TechShowcase() {
           {/* Right - Content */}
           <motion.div
             key={activeTab}
-            className="lg:col-span-8 bg-white border-2 border-outline-variant/30 rounded-2xl p-8 shadow-xl"
+            className="bg-white border-2 border-outline-variant/30 rounded-2xl p-6 md:p-7 lg:p-8 shadow-xl flex flex-col"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
             {/* Header */}
             <motion.div
-              className="mb-6 pb-6 border-b-2 border-secondary"
+              className="mb-5 pb-5 border-b-2 border-secondary"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg bg-secondary/10 border-2 border-secondary/20 flex items-center justify-center">
                   <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
                     {techCategories.find(c => c.id === activeTab)?.icon}
@@ -154,7 +173,7 @@ export default function TechShowcase() {
 
             {/* Description */}
             <motion.p
-              className="font-body-lg text-body-lg text-on-surface-variant mb-8"
+              className="font-body-lg text-body-lg text-on-surface-variant mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -163,11 +182,11 @@ export default function TechShowcase() {
             </motion.p>
 
             {/* Specs */}
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 mb-6 flex-1">
               {techContent[activeTab as keyof typeof techContent].specs.map((spec, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/20 hover:border-secondary/30 transition-all"
+                  className="flex items-center justify-between p-3.5 md:p-4 bg-surface-container-low rounded-lg border border-outline-variant/20 hover:border-secondary/30 transition-all"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}

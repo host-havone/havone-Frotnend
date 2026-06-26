@@ -43,73 +43,51 @@ export default function NewsletterPage() {
     <>
       <Speedometer />
       <Header />
-      <main className="mt-[100px] mb-xl px-margin max-w-[1440px] mx-auto">
-        {/* Hero Section */}
-        <section ref={heroRef} className="py-xl border-b border-outline-variant/20 mb-xl relative overflow-hidden">
+      <main className="mt-[100px]">
+        {/* Hero Section — Full viewport single screen */}
+        <section ref={heroRef} className="h-[calc(100dvh-100px)] w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-white relative overflow-hidden px-margin">
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 z-0 opacity-40">
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+          </div>
+
+          {/* Content */}
           <motion.div
-            className="max-w-3xl"
-            initial={{ opacity: 0, x: -40 }}
-            animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-            transition={{ duration: 0.8 }}
+            className="relative z-10 text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.div
-              className="flex items-center gap-xs mb-md"
-              initial={{ opacity: 0 }}
-              animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
+            {/* Label */}
+            <motion.span
+              className="font-label-tech text-label-tech text-secondary uppercase tracking-[0.2em] block mb-6"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="bg-secondary-fixed text-on-secondary-fixed px-xs py-1 rounded-xs font-label-tech text-[10px] tracking-widest uppercase">
-                System: Online
-              </span>
-              <div className="h-[1px] w-12 bg-outline-variant"></div>
-            </motion.div>
+              News & Updates
+            </motion.span>
+
+            {/* Headline */}
             <motion.h1
-              className="font-h1 text-h1 mb-md"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold text-primary leading-[1.1] tracking-[-0.02em] mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
             >
-              NEWSROOM & <span className="text-secondary">INTELLIGENCE</span>
+              News & <span className="text-secondary">Updates</span>
             </motion.h1>
+
+            {/* Description */}
             <motion.p
-              className="font-body-lg text-body-lg text-on-surface-variant max-w-xl"
+              className="text-lg md:text-xl text-on-surface-variant leading-[1.8] max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               animate={isHeroInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.4 }}
             >
-              Real-time updates on the evolution of autonomous mobility. From technical breakthroughs to strategic milestones.
+              Product launches, partnerships, and milestones on our road to autonomous mobility.
             </motion.p>
-          </motion.div>
-
-          {/* Telemetry Widget */}
-          <motion.div
-            className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-end gap-xs p-md bg-white border border-outline-variant/20 rounded-lg shadow-xl"
-            initial={{ opacity: 0, x: 40 }}
-            animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
-            transition={{ delay: 0.7 }}
-          >
-            <span className="font-label-tech text-[10px] text-on-surface-variant uppercase">Innovation Velocity</span>
-            <div className="flex items-end gap-xs">
-              <motion.span
-                className="font-h1 text-h1 leading-none"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                124
-              </motion.span>
-              <span className="font-label-tech text-secondary font-bold">GB/s</span>
-            </div>
-            <div className="w-48 h-1 bg-surface-container-high relative mt-xs">
-              <motion.div
-                className="absolute left-0 top-0 h-full bg-secondary-fixed"
-                initial={{ width: "0%" }}
-                animate={{ width: "75%" }}
-                transition={{ duration: 1.5, delay: 1 }}
-              />
-            </div>
-            <span className="font-label-tech text-[10px] text-on-surface-variant mt-xs italic">
-              Telemetry synced via LEO constellation
-            </span>
           </motion.div>
         </section>
 

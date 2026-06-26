@@ -1,37 +1,78 @@
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function HeroSection() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="py-xl px-margin bg-white">
-      <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-col md:flex-row gap-lg items-end mb-xl">
-          <div className="flex-1">
-            <span className="font-display text-label-tech text-secondary font-bold uppercase tracking-widest mb-base block">
-              Our Mission
-            </span>
-            <h1 className="text-primary mb-md">
-              Redefining Autonomy with Machine Precision.
+    <section className="relative h-[100dvh] w-full overflow-hidden bg-slate-950">
+      {/* Full-width background image with parallax */}
+      <div className="absolute inset-0 z-0" style={{ transform: `translateY(${scrollY * 0.5}px)` }}>
+        <Image
+          src="/images/about-hero-team.png"
+          alt="HAVONE engineering team in startup office"
+          width={1536}
+          height={1024}
+          className="w-full h-full object-cover"
+          priority
+        />
+        {/* Black gradient on left for heading visibility + cinematic overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-slate-950/70 to-slate-950/20" />
+      </div>
+
+      {/* Content — left side only */}
+      <div className="relative z-10 h-full w-full flex items-center px-5 sm:px-10 md:px-16 lg:px-20 xl:px-24">
+        <div className="max-w-[1440px] mx-auto w-full">
+          <div className="max-w-xl">
+            {/* Label */}
+            <div className="mb-8 md:mb-10">
+              <span className="inline-flex items-center gap-2 font-display text-[10px] md:text-[11px] text-secondary font-bold uppercase tracking-[0.3em]">
+                <span className="w-6 h-[1.5px] bg-secondary" />
+                Our Story
+              </span>
+            </div>
+
+            {/* Narrative - 3 lines */}
+            <div className="mb-8 md:mb-12 space-y-3">
+              <p className="text-base md:text-lg text-slate-200 leading-relaxed font-normal">
+                Every journey generates thousands of driving decisions.
+              </p>
+              <p className="text-base md:text-lg text-slate-200 leading-relaxed font-normal">
+                Most disappear forever.
+              </p>
+              <p className="text-base md:text-lg text-slate-200 leading-relaxed font-normal">
+                We&apos;re building the intelligence that ensures they don&apos;t.
+              </p>
+            </div>
+
+            {/* Headline - oversized with accent */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-[-0.02em] mb-10 md:mb-12">
+              Making Indian Roads the{" "}
+              <span className="text-secondary">Safest</span> in the World.
             </h1>
+
+            {/* CTA - outlined button */}
+            <div>
+              <Link href="/contact">
+                <button className="px-8 md:px-10 py-4 md:py-5 border-2 border-secondary text-secondary font-semibold text-sm md:text-base uppercase tracking-wide rounded-lg hover:bg-secondary hover:text-slate-950 transition-all duration-300">
+                  Join Our Mission
+                </button>
+              </Link>
+            </div>
           </div>
-          <div className="flex-1 pb-base">
-            <p className="text-body-lg text-on-surface-variant">
-              We are engineering the future of global logistics through
-              uncompromising safety standards and advanced AI integration,
-              ensuring that every kilometer driven is a step toward a more
-              sustainable and efficient world.
-            </p>
-          </div>
-        </div>
-        <div className="w-full h-[540px] bg-surface-container-highest rounded-lg overflow-hidden border border-outline-variant/30 shadow-sm">
-          <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpGQOsFG40MIjS3UEKSklId80B-pGnBAMWOfuM95ZRQQ5E-ccRKihlL4hl8ru1br0XEuK16wK134KQmMIPfF4Ch72UYm8PIFLJbb6hzyBn33XI0I519jNL4MTsxkCblalueYwBLvmnVN8Ay3BofrJnIj7Pd_s8dG_-cLqglGvJMTv-ADgPv5GVlETMT_TVoDBP3gkp4GsIooVSqT90BNC7cUTmbISGoBN0PRLxOo-Celqb61tIFxrG5BkCmf2hjS-O3ONwQHpmHAMB"
-            alt="Autonomous fleet"
-            width={1440}
-            height={540}
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-          />
         </div>
       </div>
+
     </section>
   );
 }

@@ -1,47 +1,82 @@
+import Image from "next/image";
 import JourneyCard from "@/components/ui/JourneyCard";
 
 const journeyMilestones = [
   {
-    year: "2019 — THE PROTOTYPE",
-    title: "Accuracy Milestone",
+    year: "2023 — THE SPARK",
+    title: "The Beginning",
     description:
-      "Achieved 99.9% sensor fusion accuracy in adverse weather conditions, setting a new industry benchmark for LiDAR-camera synchronization.",
+      "Founded with one question: \"What if every truck on Indian roads could see and learn?\" First IoT prototype built in a garage.",
     highlight: false,
   },
   {
-    year: "2021 — SUSTAINABILITY PUSH",
-    title: "Net Zero Logistics",
+    year: "2024 — BUILDING",
+    title: "Product Development",
     description:
-      "Launched the first fully electric autonomous corridor, reducing carbon emissions by 40% compared to traditional freight methods.",
+      "Hardware refined. Software platform built. First conversations with fleet operators. Product-market fit discovered.",
     highlight: false,
   },
   {
-    year: "TODAY — SCALE & INNOVATION",
-    title: "The Global Grid",
+    year: "2025 — LAUNCH",
+    title: "Going Live",
     description:
-      "Deploying the world's most advanced autonomous fleet management system, powered by real-time neural network training.",
+      "First devices deployed on real vehicles. Platform goes live. Early fleet partners onboarded. The data starts flowing.",
     highlight: true,
+  },
+  {
+    year: "THE FUTURE — AUTONOMY",
+    title: "The Vision",
+    description:
+      "Billions of kilometers of labeled Indian driving data. The world's most robust autonomous driving AI — born from the world's most complex roads.",
+    highlight: false,
   },
 ];
 
 export default function JourneySection() {
   return (
-    <section className="py-xl px-margin bg-surface-container-lowest border-y border-outline-variant/10">
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
-        <div className="md:col-span-4 md:sticky md:top-32">
-          <h2 className="text-primary mb-md">Our Journey</h2>
-          <p className="text-body-md text-on-surface-variant mb-md">
-            Since our inception, we&apos;ve been dedicated to closing the gap between
-            human intuition and machine reliability.
+    <section className="py-12 md:py-14 lg:py-16 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-surface-container-lowest border-y border-outline-variant/10">
+      <div className="w-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-6 lg:gap-8 xl:gap-10 items-start">
+        {/* Left Column — sticky sidebar */}
+        <div className="md:sticky md:top-24">
+          <h2 className="text-primary mb-3">Our Journey</h2>
+          <p className="text-body-md text-on-surface-variant mb-4">
+            From a garage prototype to real devices on Indian roads — every step
+            brings us closer to autonomous mobility.
           </p>
-          <div className="flex items-center gap-sm">
-            <div className="w-12 h-1 bg-secondary"></div>
+          <div className="flex items-center gap-sm mb-4">
+            <div className="w-10 h-1 bg-secondary"></div>
             <span className="font-display text-label-tech uppercase text-primary font-bold">
-              Established 2018
+              Founded 2023
             </span>
           </div>
+          <div className="rounded-xl overflow-hidden border border-outline-variant/20 shadow-sm">
+            <Image
+              src="/images/about-journey-timeline.png"
+              alt="HAVONE journey from prototype to autonomous truck"
+              width={1536}
+              height={1024}
+              className="w-full h-auto"
+            />
+          </div>
+          {/* Image caption labels */}
+          <div className="grid grid-cols-3 gap-2 mt-1.5">
+            <div className="text-center">
+              <span className="text-[12px] font-bold text-primary uppercase tracking-wide block">Prototype</span>
+              <span className="text-[11px] text-on-surface-variant">2023</span>
+            </div>
+            <div className="text-center">
+              <span className="text-[12px] font-bold text-secondary uppercase tracking-wide block">Device</span>
+              <span className="text-[11px] text-on-surface-variant">2024</span>
+            </div>
+            <div className="text-center">
+              <span className="text-[12px] font-bold text-primary uppercase tracking-wide block">Impact</span>
+              <span className="text-[11px] text-on-surface-variant">2025+</span>
+            </div>
+          </div>
         </div>
-        <div className="md:col-span-8 flex flex-col gap-lg">
+
+        {/* Right Column — milestone cards */}
+        <div className="flex flex-col gap-3 md:pt-1">
           {journeyMilestones.map((milestone, index) => (
             <JourneyCard key={index} {...milestone} />
           ))}

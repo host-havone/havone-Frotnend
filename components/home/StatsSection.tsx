@@ -5,28 +5,28 @@ import { useRef } from "react";
 
 const stats = [
   {
-    value: "150M+",
-    label: "Autonomous Miles Driven",
-    description: "Safely across 15+ countries",
-    icon: "route"
+    value: "30+",
+    label: "Data Points Per Second",
+    description: "Captured from every journey",
+    icon: "timeline"
   },
   {
-    value: "99.9%",
-    label: "System Reliability",
-    description: "Industry-leading uptime",
-    icon: "verified"
+    value: "4G + 2G",
+    label: "Always Connected",
+    description: "Even in rural India",
+    icon: "cell_tower"
   },
   {
-    value: "2,400+",
-    label: "Active Fleet Units",
-    description: "Operating 24/7 globally",
-    icon: "local_shipping"
+    value: "< 100ms",
+    label: "Edge AI Response",
+    description: "Real-time safety detection",
+    icon: "bolt"
   },
   {
-    value: "< 2ms",
-    label: "Response Latency",
-    description: "Real-time decision making",
-    icon: "speed"
+    value: "24/7",
+    label: "Live Monitoring",
+    description: "Your fleet never sleeps",
+    icon: "visibility"
   },
 ];
 
@@ -55,10 +55,10 @@ export default function StatsSection() {
           transition={{ duration: 0.6 }}
         >
           <span className="font-label-tech text-label-tech text-secondary uppercase tracking-widest">
-            By The Numbers
+            Built for Indian Roads
           </span>
           <h2 className="font-h1 text-h1 mt-4">
-            Proven Performance at Scale
+            Device Capabilities
           </h2>
         </motion.div>
 
@@ -112,7 +112,7 @@ export default function StatsSection() {
           transition={{ delay: 0.5 }}
         >
           <p className="font-body-lg text-body-lg text-white/80 mb-6">
-            Join the autonomous revolution. Deploy proven technology at scale.
+            No fake stats. Just real device capabilities, ready for Indian roads.
           </p>
           <motion.a
             href="/contact"

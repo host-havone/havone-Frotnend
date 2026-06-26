@@ -117,9 +117,9 @@ export default function Speedometer() {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
+      animate={{ opacity: 0.7, scale: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-[60] bg-[#0c100b]/85 backdrop-blur-xl p-3 sm:p-4 rounded-full border border-[#8DC313]/20 shadow-2xl flex flex-col items-center pointer-events-none overflow-visible w-28 sm:w-36"
+      className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-[60] bg-[#0c100b]/85 backdrop-blur-xl p-3 sm:p-4 rounded-full border border-[#8DC313]/20 shadow-2xl flex flex-col items-center pointer-events-none overflow-visible w-28 sm:w-26 "
       style={{
         boxShadow: "0 0 30px rgba(141, 195, 19, 0.05), 0 15px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.1)"
       }}
@@ -140,7 +140,7 @@ export default function Speedometer() {
             </filter>
           </defs>
 
-          <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="0.5" />
+          <circle cx="20" cy="20" r="25" fill="none" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="0.2" />
 
           <path
             d="M 20.4 79.6 A 42 42 0 1 1 79.6 79.6"
@@ -197,11 +197,11 @@ export default function Speedometer() {
           <circle
             cx="50"
             cy="50"
-            r="19"
+            r="15"
             fill="none"
             stroke="#8DC313"
             strokeWidth="0.5"
-            opacity="0.2"
+            opacity="0.1"
             style={{ transformOrigin: "50px 50px" }}
           />
         </svg>
